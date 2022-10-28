@@ -1,0 +1,28 @@
+.page__contact {
+  background-color: $color-secondary;
+}
+
+.page__login {
+  background-color: $color-secondary;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page__dashboard {
+  display: grid;
+  grid-template-columns: minmax(min-content, 20rem) 1fr;
+  @media only screen and (max-width: $tab) {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr;
+  }
+  height: 100vh;
+}
+
+.page__displayAd {
+  grid-template-rows: min-content 1fr;
+  @media only screen and (max-width: $tab) {
+    grid-template-rows: repeat(2, min-content) 1fr;
+  }
+}

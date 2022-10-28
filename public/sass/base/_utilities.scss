@@ -1,0 +1,19 @@
+// .closeModal {
+//   visibility: hidden;
+//   display: none;
+//   opacity: 0;
+// }
+
+.hidden {
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+}
+
+.spinner {
+  &__img {
+    height: 6rem;
+    width: 6rem;
+    animation: rotate 2s infinite linear;
+  }
+}

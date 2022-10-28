@@ -1,0 +1,85 @@
+.story {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+    @media only screen and (max-width: $tab) {
+grid-template-columns: 1fr;
+  }
+
+  &__pictures {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1/2;
+    background-image: linear-gradient(
+        rgba($color-primary, 0.8),
+        rgba($color-primary, 0.8)
+      ),
+      url(../img/background-story.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 70rem;
+
+
+    &--1 {
+      width: 60%;
+      opacity: 0.6;
+      border-radius: 3px;
+@include boxShadow;
+      z-index: 2;
+      @media only screen and (max-width: $tab) {
+         display: none;
+            }
+    }
+   
+  }
+
+  &__content {
+    grid-column: 2/-1;
+    background-color: $color-grey-light-1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-title--sub {
+      font-size: 2.5rem;
+      font-family: $font-display;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: $color-primary-dark;
+    }
+
+    &-title--main {
+      font-size: 4.5rem;
+      font-family: $font-primary;
+      font-weight: 300;
+      @media only screen and (max-width: $mob) {
+      font-size: 3.5rem;
+    
+      }
+    }
+  }
+
+  &__block {
+    width: 80%;
+  }
+
+  &__text {
+    font-size: 1.8rem;
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+    margin-bottom: 3rem;
+  }
+
+  &__btn {
+    background-color: $color-primary-dark;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2rem;
+    transition: all 0.2s;
+    align-self: center;
+    &:hover,
+    &:active {
+      background-color: $color-primary;
+    }
+  }
+}

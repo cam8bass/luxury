@@ -1,0 +1,97 @@
+.form {
+  z-index: 200;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  border-radius: 2px;
+  @include boxShadow;
+  width: 65rem;
+  height: auto;
+  padding: 2rem;
+  background-color: rgba($color-secondary, 0.2);
+  display: grid;
+  grid-template-rows: repeat(5, min-content);
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+  justify-content: center;
+  @media only screen and (max-width: $tab) {
+    width: 100%;
+  }
+
+  &__block {
+
+  }
+
+  &__label {
+    font-size: 2rem;
+    font-family: $font-display;
+    font-weight: 300;
+    color: #fff;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  &__input {
+    height: 3rem;
+    width: 80%;
+    border: none;
+    border-radius: 2px;
+    background-color: $color-grey-dark-2;
+    color: #fff;
+    font-size: 2rem;
+    font-family: $font-primary;
+    font-weight: 300;
+    letter-spacing: 1px;
+    padding-left: 1rem;
+    @include boxShadow;
+  }
+
+  &__select {
+    height: 3rem;
+    width: 30rem;
+    background-color: rgba($color-grey-dark-2, 0.8);
+    border: none;
+    border-radius: 2px;
+    font-size: 1.8rem;
+    font-family: $font-primary;
+    font-weight: 300;
+    @include boxShadow;
+    @media only screen and (max-width: $tab) {
+      width: 50%;
+    }
+  }
+
+  &__message {
+    width: 100%;
+    height: 20rem;
+    background-color: $color-grey-dark-2;
+    border: none;
+    border-radius: 2px;
+    font-size: 2rem;
+    padding: 1rem;
+    font-family: $font-primary;
+    font-weight: 300;
+    @include boxShadow;
+    color: #fff;
+  }
+
+  &__btn {
+    justify-self: flex-end;
+    background-color: $color-primary-dark;
+    font-size: 2rem;
+    font-weight: 400;
+    border-radius: 2px;
+    padding: 1rem 1.5rem;
+    color: #fff;
+    transition: all 0.2s;
+    &:hover,
+    &:active {
+      background-color: $color-primary;
+    }
+  }
+}
+
+.section__form {
+  position: relative;
+}

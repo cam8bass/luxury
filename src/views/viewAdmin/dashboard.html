@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/css/main.css" />
+
+    <title>Luxury Tableau de bord</title>
+  </head>
+  <body class="page__dashboard">
+    <div class="sidebar">
+      <h1 class="sidebar__title">
+        <a
+          href="admin.php?login=true&action=dashboard"
+          id="dashboard"
+          class="sidebar__title-link"
+        >
+          Administration
+        </a>
+      </h1>
+
+      <nav class="sidebar__nav">
+        <ul class="sidebar__nav-list">
+          <li class="sidebar__nav-item">
+            <a
+              href="admin.php?login=true&action=createAd"
+              id="add-ad"
+              class="sidebar__nav-link"
+            >
+              <img
+                src="public/img/icons/icon-edit-blue.png"
+                alt="icon add"
+                class="sidebar__nav-icon"
+              />
+              <p class="sidebar__nav-text">Créer annonce</p>
+            </a>
+          </li>
+
+          <li class="sidebar__nav-item">
+            <a
+              href="admin.php?login=true&action=displayAd"
+              id="displayAd"
+              class="sidebar__nav-link"
+            >
+              <img
+                src="public/img/icons/icon-ad.png"
+                alt="icon add"
+                class="sidebar__nav-icon"
+              />
+              <p class="sidebar__nav-text">Annonces</p>
+            </a>
+          </li>
+
+          <li class="sidebar__nav-item">
+            <a
+              href="admin.php?login=true&action=settings"
+              id="settings"
+              class="sidebar__nav-link"
+            >
+              <img
+                src="public/img/icons/icon-profile.png"
+                alt="icon profile"
+                class="sidebar__nav-icon"
+              />
+              <p class="sidebar__nav-text">Mon profil</p>
+            </a>
+          </li>
+
+          <li class="sidebar__nav-item">
+            <a
+              href="admin.php?login=true&action=logout"
+              id="logout"
+              class="sidebar__nav-link"
+            >
+              <img
+                src="public/img/icons/icon-logout.png"
+                alt="icon logout"
+                class="sidebar__nav-icon"
+              />
+              <p class="sidebar__nav-text">Deconnexion</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="content content__dashboard">
+      <img src="public/img/logo-luxury.png" alt="logo" class="content__logo" />
+    </div>
+
+    <div class="popup hidden">
+      <div class="popup__content">
+        <h4 class="popup__title">Deconnexion</h4>
+        <p class="popup__text">Êtes-vous sur de vouloir vous déconnecter?</p>
+
+        <div class="popup__btn">
+          <button type="button" id="btn-cancel" class="btn popup__cancel">
+            Annuler
+          </button>
+
+          <a
+            href="indexAdmin.php?login=true&action=logout"
+            class="btn popup__agree"
+            >Confirmer</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

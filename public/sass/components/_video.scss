@@ -1,0 +1,14 @@
+.video {
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden;
+  filter: brightness(30%);
+
+  &__content {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 2px solid #fff;
+  }
+}

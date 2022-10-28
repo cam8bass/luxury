@@ -1,0 +1,10 @@
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
+  column-gap: 2rem;
+  margin: 8rem 2rem;
+  @media only screen and (max-width: $mob) {
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+
+  }
+}

@@ -1,0 +1,24 @@
+.errorJs {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  z-index: 2000;
+  display: flex;
+
+ img {
+    height: 3rem;
+    width: 3rem;
+    fill: $color-primary;
+    transform: translateY(-0.3rem);
+  }
+
+  p {
+    color: #FFF;
+    font-family: $font-primary;
+    font-weight: 300;
+    margin-left: 1.5rem;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+}

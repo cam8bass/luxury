@@ -1,0 +1,55 @@
+.realtor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-secondary;
+  padding: 4rem;
+  @media only screen and (max-width: $tab) {
+    grid-row: 3/4;
+  }
+  &__title {
+    font-family: $font-primary;
+    color: $color-primary;
+    font-size: 2.5rem;
+    font-weight: 100;
+    align-self: flex-start;
+    margin-left: 2rem;
+  }
+
+  &__all {
+    margin: 2rem;
+  }
+
+  &__block {
+    display: grid;
+    grid-template-columns: min-content max-content;
+    align-items: center;
+    column-gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  &__profile {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  &__detail {
+    &-name {
+      font-size: 2rem;
+      color: #fff;
+      font-family: $font-primary;
+      font-weight: 300;
+    }
+
+    &-sold {
+      font-size: 1.4rem;
+      color: #fff;
+      font-family: $font-primary;
+      font-weight: 100;
+      display: block;
+    }
+  }
+}

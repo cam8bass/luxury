@@ -1,0 +1,37 @@
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: repeat(2, min-content);
+  align-items: center;
+  justify-content: center;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  padding: 2rem;
+  
+  &__icon {
+    grid-row: 1/-1;
+    align-self: flex-start;
+    width: 6rem;
+    height: 6rem;
+    @media only screen and (max-width: $mob) {
+  width: 4rem;
+  height: 4rem;
+  
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    color: $color-grey-dark-1;
+    font-family: $font-display;
+    font-weight: 400;
+  }
+
+  &__text {
+    grid-column: 2/-1;
+    grid-row: 2/-1;
+    font-size: 1.8rem;
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+  }
+}

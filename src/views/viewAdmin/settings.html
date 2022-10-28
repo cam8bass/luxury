@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer type="module" src="public/js/controllers/ControllerSettings.js"></script>
+
+    <link rel="stylesheet" href="public/css/main.css" />
+    <title>Luxury Mon profil</title>
+  </head>
+  <body class="page__dashboard">
+    <div class="sidebar">
+      <h1 class="sidebar__title">
+        <a href="admin.php?login=true&action=dashboard" id="dashboard" class="sidebar__title-link">
+          Administration
+        </a>
+      </h1>
+
+      <nav class="sidebar__nav">
+        <ul class="sidebar__nav-list">
+          <li class="sidebar__nav-item">
+            <a
+              href="admin.php?login=true&action=createAd"
+              id="add-ad"
+              class="sidebar__nav-link"
+            >
+              <img
+                src="public/img/icons/icon-edit-blue.png"
+                alt="icon add"
+                class="sidebar__nav-icon"
+              />
+              <p class="sidebar__nav-text">Créer annonce</p>
+            </a>
+          </li>
+
+          <li class="sidebar__nav-item">
+            <a
+              href="admin.php?login=true&action=displayAd"
+              id="displayAd"
+              class="sidebar__nav-link"
+            >
+              <img
+                src="public/img/icons/icon-ad.png"
+                alt="icon add"
+                class="sidebar__nav-icon"
+              />
+              <p class="sidebar__nav-text">Annonces</p>
+            </a>
+          </li>
+
+          <li class="sidebar__nav-item">
+            <a
+              href="admin.php?login=true&action=settings"
+              id="settings"
+              class="sidebar__nav-link"
+            >
+              <img
+                src="public/img/icons/icon-profile.png"
+                alt="icon profile"
+                class="sidebar__nav-icon"
+              />
+              <p class="sidebar__nav-text">Mon profil</p>
+            </a>
+          </li>
+
+          <li class="sidebar__nav-item">
+            <a
+              href="admin.php?login=true&action=logout"
+              id="logout"
+              class="sidebar__nav-link"
+            >
+              <img
+                src="public/img/icons/icon-logout.png"
+                alt="icon logout"
+                class="sidebar__nav-icon"
+              />
+              <p class="sidebar__nav-text">Deconnexion</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="content content__settings">
+      <div class="profile">
+        <h1 class="profile__title">Mon profil</h1>
+
+        <div class="profile__info">
+          <div class="profile__block">
+            <p class="profile__label">Nom:</p>
+            <p class="profile__text"></p>
+            <button type="button" class="profile__btn">
+              <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
+            </button>
+          </div>
+          <div class="profile__block">
+            <p class="profile__label">Prenom:</p>
+            <p class="profile__text"></p>
+            <button type="button" class="profile__btn">
+              <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
+            </button>
+          </div>
+          <div class="profile__block">
+            <p class="profile__label">Email:</p>
+            <p class="profile__text"></p>
+            <button type="button" class="profile__btn">
+              <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
+            </button>
+          </div>
+      </div>
+      <div class="profile__background">&nbsp;</div>
+    </div>
+  </body>
+</html>
