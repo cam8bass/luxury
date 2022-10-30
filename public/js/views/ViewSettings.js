@@ -1,47 +1,56 @@
 import View from "./Views.js";
 
 class ViewSettings extends View {
-  _btnSettings = document.querySelector("#settings");
   _parentElement = document.querySelector(".content");
+  _btnEditEmail = document.querySelector("#edit-email");
+  _textLastname = document.querySelector("#lastname");
+  _textFirstname = document.querySelector("#firstname");
+  _textEmail = document.querySelector("#email");
+  _formChangeEmail = document.querySelector("#form-changeEmail");
 
-  _generateMarkup() {
-    return `
-  <div class="content content__settings">
-  <div class="profile">
-    <h1 class="profile__title">Mon profil</h1>
-
-    <div class="profile__info">
-      <div class="profile__block">
-        <p class="profile__label">Nom:</p>
-        <p class="profile__text">${this._data.lastName}</p>
-        <button type="button" class="profile__btn">
-          <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
-        </button>
-      </div>
-      <div class="profile__block">
-        <p class="profile__label">Prenom:</p>
-        <p class="profile__text">${this._data.firstName}</p>
-        <button type="button" class="profile__btn">
-          <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
-        </button>
-      </div>
-      <div class="profile__block">
-        <p class="profile__label">Email:</p>
-        <p class="profile__text">${this._data.email}</p>
-        <button type="button" class="profile__btn">
-          <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
-        </button>
-      </div>
-  </div>
-  <div class="profile__background">&nbsp;</div>
-</div>
-  `;
+  completeSettings(allSettings) {
+    this._textFirstname.textContent = allSettings["firstName"] ?? "";
+    this._textLastname.textContent = allSettings["lastName"] ?? "";
+    this._textEmail.textContent = allSettings["email"] ?? "";
   }
 
-  // handlerOpenSettings(handler) {
-  //   if (!this._btnSettings) return;
-  //   this._btnSettings.addEventListener("click", handler);
-  // }
+  displayErrorSubmit(error) {
+ 
+    error["errorNewEmail"]
+      ? (this._parentElement.querySelector("#error-newEmail").textContent =
+          error["errorNewEmail"])
+      : "";
+
+    error["errorOldEmail"]
+      ? (this._parentElement.querySelector("#error-oldEmail").textContent =
+          error["errorOldEmail"])
+      : "";
+  }
+
+  toogleWindow() {
+    this._formChangeEmail.classList.toggle("hidden");
+  }
+
+  handlerOpenChangeEmail() {
+    this._btnEditEmail.addEventListener("click", this.toogleWindow.bind(this));
+  }
+
+  handlerCloseChangeEmail() {
+    this._parentElement
+      .querySelector("#btn-cancel")
+      .addEventListener("click", this.toogleWindow.bind(this));
+  }
+
+  handlerSubmitChangeEmail(handler) {
+    this._parentElement
+      .querySelector("#form-changeEmail")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (handler()) {
+          this.submit();
+        }
+      });
+  }
 }
 
 export default new ViewSettings();

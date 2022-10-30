@@ -44,6 +44,19 @@ class ModelAdmin
   }
 
   /**
+   * retrieve user email
+   * @param string $email
+   * @return array user email
+   */
+  public function retrieveEmail(string $email)
+  {
+    $statementRetrieveEmail = $this->dbh->connectDb()->prepare("SELECT email FROM user WHERE email=:email");
+    $statementRetrieveEmail->bindValue(":email", $email);
+    $statementRetrieveEmail->execute();
+    return $statementRetrieveEmail->fetch();
+  }
+
+  /**
    * delete ad
    * @param string $idAd 
    * @return bool 
@@ -83,6 +96,14 @@ class ModelAdmin
     $statementAddAd->bindValue(":description", $newAd['description']);
     $statementAddAd->execute();
     return $statementAddAd->fetch();
+  }
+
+  public function updateEmail(string $newEmail, string $oldUserEmail)
+  {
+    $statementUpdateEmail = $this->dbh->connectDb()->prepare("UPDATE user SET email=:newEmail WHERE email=:oldUserEmail");
+    $statementUpdateEmail->bindValue(':newEmail', $newEmail);
+    $statementUpdateEmail->bindValue(':oldUserEmail', $oldUserEmail);
+    $statementUpdateEmail->execute();
   }
 
   public function saveNewImg(array $img)

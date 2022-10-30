@@ -12,6 +12,7 @@ class ViewLogin {
   };
 
   displayErrorSubmit(email, error) {
+
     error["errorEmail"]
       ? (this._errorEmailText.textContent = error["errorEmail"])
       : "";

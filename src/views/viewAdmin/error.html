@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer type="module" src="public/js/controllers/ControllerError.js"></script>
+
+    <link rel="stylesheet" href="public/css/main.css" />
+
+    <title>Page d'erreur</title>
+  </head>
+  <body>
+    <div class="popup">
+      <div class="popup__content">
+        <h1 class="popup__title" id="error-title">Erreur</h1>
+        <div class="popup__block">
+          <p class="login__error-text" id="error-message">Une erreur est survenue</p>
+        </div>
+        <div class="popup__btn">
+          <a
+            href="admin.php?login=true&action=dashboard"
+            class="btn popup__btn-cancel"
+            >Retour</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

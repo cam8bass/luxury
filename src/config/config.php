@@ -1,7 +1,10 @@
 <?php
 
 define('ERROR_EMAIL_NOT_EXIST', "L'adresse email n'est pas reconnue");
+define('ERROR_EMAIL_WRONG', "L'adresse email est incorrect");
+define('ERROR_EMAIL_NOT_DIFF', "La nouvelle adresse email doit être différente de l'ancienne");
 define('ERROR_PWD', "Le mot de passe est incorrect");
+define('ERROR_EMAIL_NOT_VALID', "L'adresse email n'est pas valide");
 
 define('ERROR_ACCESS_DENIED', "Accès refusé");
 define("ERROR_EMPTY", "Veuillez renseigner ce champ");

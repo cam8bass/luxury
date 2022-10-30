@@ -26,10 +26,8 @@ class login
     // Permets de vérifier les inputs
     $allInput = $this->errorManagement->sanatizeLoginAccount($_POST);
     // Permets de récupérer et valider l’adresse email et le password
-    $email = filter_var(trim($allInput['email']) ?? "", FILTER_VALIDATE_EMAIL);
+    $email = $allInput['email'] ?? '';
     $password = $allInput['password'] ?? "";
-
-
 
     // Permets de rechercher un utilisateur grâce à l'email rentré
     $userAccount = $this->modelLogin->retrieveEmail($email);

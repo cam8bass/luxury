@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer type="module" src="public/js/controllers/ControllerSettings.js"></script>
+    <script
+      defer
+      type="module"
+      src="public/js/controllers/ControllerSettings.js"
+    ></script>
 
     <link rel="stylesheet" href="public/css/main.css" />
     <title>Luxury Mon profil</title>
@@ -12,7 +16,11 @@
   <body class="page__dashboard">
     <div class="sidebar">
       <h1 class="sidebar__title">
-        <a href="admin.php?login=true&action=dashboard" id="dashboard" class="sidebar__title-link">
+        <a
+          href="admin.php?login=true&action=dashboard"
+          id="dashboard"
+          class="sidebar__title-link"
+        >
           Administration
         </a>
       </h1>
@@ -89,27 +97,65 @@
         <div class="profile__info">
           <div class="profile__block">
             <p class="profile__label">Nom:</p>
-            <p class="profile__text"></p>
-            <button type="button" class="profile__btn">
-              <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
-            </button>
+            <p class="profile__text" id="lastname"></p>
           </div>
           <div class="profile__block">
             <p class="profile__label">Prenom:</p>
-            <p class="profile__text"></p>
-            <button type="button" class="profile__btn">
-              <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
-            </button>
+            <p class="profile__text" id="firstname"></p>
           </div>
           <div class="profile__block">
             <p class="profile__label">Email:</p>
-            <p class="profile__text"></p>
-            <button type="button" class="profile__btn">
-              <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon">
+            <p class="profile__text" id="email"></p>
+            <button type="button" class="profile__btn" id="edit-email">
+              <img
+                src="public/img/icons/icon-edit.png"
+                alt="icon edit"
+                class="profile__btn-icon"
+              />
             </button>
           </div>
+        </div>
+        <div class="profile__background">&nbsp;</div>
       </div>
-      <div class="profile__background">&nbsp;</div>
+
+      <form
+        action="admin.php?login=true&action=changeEmail"
+        method="post"
+        class="popup hidden"
+        id="form-changeEmail"
+      >
+        <div class="popup__content">
+          <h4 class="popup__title">Changement email</h4>
+          <div class="popup__block">
+            <label for="oldEmail" class="popup__label"
+              >Ancienne adresse email</label
+            >
+            <input type="email" name="oldEmail" id="input-oldEmail" class="popup__input" />
+            <div class="login__error">
+              <span id="error-oldEmail" class="login__error-text"
+                ></span
+              >
+            </div>
+          </div>
+          <div class="popup__block">
+            <label for="newEmail" class="popup__label"
+              >Nouvelle adresse email</label
+            >
+            <input type="email" name="newEmail" id="input-newEmail" class="popup__input" />
+            <div class="login__error">
+              <span id="error-newEmail" class="login__error-text"
+                ></span
+              >
+            </div>
+          </div>
+          <div class="popup__btn">
+            <button class="btn popup__btn-cancel" id="btn-cancel">
+              Annuler
+            </button>
+            <button type="submit" class="btn popup__btn-agree">Confirmer</button>
+          </div>
+        </div>
+      </form>
     </div>
   </body>
 </html>

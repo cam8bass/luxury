@@ -7,7 +7,7 @@ class ModelLogin {
    * @param {*} errorEmailText
    * @returns bool
    */
-  validEmail (inputEmail, errorEmailText) {
+  validEmail(inputEmail, errorEmailText) {
     const emailRegex = new RegExp(
       "^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$",
       "g"
@@ -22,7 +22,7 @@ class ModelLogin {
       errorEmailText.textContent = "Adresse non valide";
       return false;
     }
-  };
+  }
 
   /**
    * valide password before submitting form
@@ -30,7 +30,7 @@ class ModelLogin {
    * @param {*} errorPasswordText
    * @returns bool
    */
-  validPassword (inputPassword, errorPasswordText) {
+  validPassword(inputPassword, errorPasswordText) {
     let message;
     if (!inputPassword.value) {
       message = "Veuillez renseigner ce champ";
@@ -59,12 +59,12 @@ class ModelLogin {
       errorPasswordText.textContent = "";
       return true;
     }
-  };
+  }
 
   checkErrorLoginSubmit = async function () {
-    const [email, inputError] = await AJAX("src/views/ViewLogin.php");
-
+    const [email, inputError] = await AJAX("src/config/ajax/ajaxLogin.php");
     return [email, inputError];
+
   };
 }
 

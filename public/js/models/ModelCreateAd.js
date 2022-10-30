@@ -180,7 +180,8 @@ class ModelCreateAd {
   }
 
   checkErrorCreateAdSubmit = async function () {
-    const [allInput, allErrors] = await AJAX("src/views/ViewCreateAd.php");
+
+    const [allInput, allErrors] = (await AJAX("src/config/ajax/ajaxCreateAd.php"));
     return [allInput, allErrors];
   };
 }

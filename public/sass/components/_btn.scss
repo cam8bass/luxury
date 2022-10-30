@@ -2,8 +2,10 @@
   cursor: pointer;
   font-family: $font-primary;
   font-weight: 300;
+  font-size: 1.8rem;
   border: none;
   padding: 1.5rem 2rem;
   text-decoration: none;
+
   @include boxShadow;
 }

@@ -82,4 +82,3 @@ const init = function () {
   controleCreateAd.checkFormCreateSubmit();
 };
 init();
-

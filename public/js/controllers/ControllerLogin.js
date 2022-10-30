@@ -12,7 +12,7 @@ class ControleLogin {
     viewLogin._inputPassword.addEventListener("change", function () {
       modelLogin.validPassword(this, viewLogin._errorPasswordText);
     });
-    
+
     if (!viewLogin._formLogin) return;
     viewLogin._formLogin.addEventListener("submit", function (e) {
       e.preventDefault();

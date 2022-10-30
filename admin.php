@@ -24,6 +24,8 @@ try {
 
           if ($_GET['action'] === "confirmCreateAd") {
             (new Admin())->addAd();
+          } elseif ($_GET['action'] === "changeEmail") {
+            (new Admin())->changeEmail();
           }
         } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
           if ($_GET['action'] === "dashboard") {

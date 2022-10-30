@@ -40,7 +40,7 @@ class ViewCreateAd extends View {
       this._inputTitle.value = "";
     } else {
       this._errorTitle.textContent = "";
-      this._inputTitle.value = allInput["title"]??"";
+      this._inputTitle.value = allInput["title"] ?? "";
     }
 
     if (allErrors["errorLocation"]) {
@@ -48,7 +48,7 @@ class ViewCreateAd extends View {
       this._inputLocation.value = "";
     } else {
       this._errorLocation.textContent = "";
-      this._inputLocation.value = allInput["location"]??"";
+      this._inputLocation.value = allInput["location"] ?? "";
     }
 
     if (allErrors["errorRoom"]) {
@@ -56,7 +56,7 @@ class ViewCreateAd extends View {
       this._inputRoom.value = "";
     } else {
       this._errorRoom.textContent = "";
-      this._inputRoom.value = allInput["room"]??"";
+      this._inputRoom.value = allInput["room"] ?? "";
     }
 
     if (allErrors["errorArea"]) {
@@ -64,7 +64,7 @@ class ViewCreateAd extends View {
       this._inputArea.value = "";
     } else {
       this._errorArea.textContent = "";
-      this._inputArea.value = allInput["area"]??"";
+      this._inputArea.value = allInput["area"] ?? "";
     }
 
     if (allErrors["errorPrice"]) {
@@ -72,7 +72,7 @@ class ViewCreateAd extends View {
       this._inputPrice.value = "";
     } else {
       this._errorPrice.textContent = "";
-      this._inputPrice.value = allInput["price"]??"";
+      this._inputPrice.value = allInput["price"] ?? "";
     }
 
     if (allErrors["errorDescription"]) {
@@ -80,9 +80,11 @@ class ViewCreateAd extends View {
       this._inputDescription.textContent = "";
     } else {
       this._errorDescription.textContent = "";
-      this._inputDescription.textContent = allInput["description"]??"";
+      this._inputDescription.textContent = allInput["description"] ?? "";
     }
   }
+
+
 }
 
 export default new ViewCreateAd();

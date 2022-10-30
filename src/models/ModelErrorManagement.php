@@ -24,7 +24,13 @@ class ErrorManagement
     "errorPassword" => ""
   ];
 
+  public array $errorChangeEmail = [
+    "errorOldEmail" => "",
+    "errorNewEmail" => ""
+  ];
+
   /**
+   * check input login
    * @param array $allInput input post
    * @return array all input sanatize
    */
@@ -33,6 +39,21 @@ class ErrorManagement
     $allInput = filter_input_array(INPUT_POST, [
       "email" => FILTER_SANITIZE_EMAIL,
       "password" => FILTER_SANITIZE_SPECIAL_CHARS
+    ]);
+
+    return $allInput ?? [];
+  }
+
+  /**
+   * check input change email
+   * @param array $allInput
+   * @return array all input sanatize
+   */
+  public function sanatizeChangeEmail(array $allInput): array
+  {
+    $allInput = filter_input_array(INPUT_POST, [
+      "oldEmail" => FILTER_SANITIZE_EMAIL,
+      "newEmail" => FILTER_SANITIZE_EMAIL
     ]);
 
     return $allInput ?? [];
@@ -48,15 +69,16 @@ class ErrorManagement
   {
     if (!$userAccount || !$email) {
       $this->errorLogin['errorEmail'] = ERROR_EMAIL_NOT_EXIST;
+    } elseif (!filter_var($userAccount["email"], FILTER_VALIDATE_EMAIL)) {
+      $this->errorLogin['errorEmail'] = ERROR_EMAIL_NOT_VALID;
     }
-
     if (!password_verify($password, $userAccount['password'] ?? '')) {
       $this->errorLogin['errorPassword'] = ERROR_PWD;
     }
-
     if (!$password || !$userAccount) {
       $this->errorLogin['errorPassword'] = ERROR_EMPTY;
     }
+
 
 
     return $this->errorLogin;
@@ -290,5 +312,26 @@ class ErrorManagement
     }
 
     return $this->errorCreateAd;
+  }
+
+  public function checkErrorChangeEmail($oldEmail, $oldUserEmail, $newEmail)
+  {
+    if ($oldEmail !== $oldUserEmail) {
+      $this->errorChangeEmail['errorOldEmail'] = ERROR_EMAIL_WRONG;
+    }
+
+    if ($oldEmail === $newEmail) {
+      $this->errorChangeEmail['errorNewEmail'] = ERROR_EMAIL_NOT_DIFF;
+    }
+
+    if (!filter_var($oldEmail, FILTER_VALIDATE_EMAIL)) {
+      $this->errorChangeEmail['errorOldEmail'] = ERROR_EMAIL_NOT_VALID;
+    }
+
+    if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
+      $this->errorChangeEmail['errorNewEmail'] = ERROR_EMAIL_NOT_VALID;
+    }
+
+    return $this->errorChangeEmail;
   }
 }

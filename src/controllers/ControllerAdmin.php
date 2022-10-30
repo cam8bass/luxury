@@ -49,10 +49,33 @@ class Admin
       // afficher page success
       header('location: admin.php?login=true&action=dashboard');
     } else {
-      print_r($errorInput);
       $_SESSION['allInput'] = $allInput;
       $_SESSION['errorCreateAd'] = $errorInput;
       header("location:admin.php?login=true&action=createAd");
+    }
+  }
+
+  public function changeEmail()
+  {
+    $allInput = $this->errorManagement->sanatizeChangeEmail($_POST);
+    $oldEmail = $allInput['oldEmail'] ?? "";
+    $newEmail = filter_var(trim($allInput['newEmail']) ?? "", FILTER_VALIDATE_EMAIL);
+    // Permets de récupérer l'ancienne adresse de l'utilisateur
+    $oldUserEmail = $this->modelAdmin->retrieveEmail($oldEmail) ?? "";
+    // Permet de vérifier les inputs 
+    $errorInput = $this->errorManagement->checkErrorChangeEmail($oldEmail, $oldUserEmail['email'] ?? "", $newEmail);
+    if (empty(array_filter($errorInput, fn ($el) => $el != ''))) {
+      // Permets d'enregistrer dans la Bdd la nouvelle adresse email
+      $this->modelAdmin->updateEmail($newEmail, $oldUserEmail['email']);
+      header("location: admin.php?login=true&action=dashboard");
+    } else {
+      // afficher page d'erreur
+      // a voir
+
+      $_SESSION['errorInputEmail'] = $errorInput;
+      // $_SESSION['userProfile'] = $errorInput;
+
+      header("location: admin.php?login=true&action=settings");
     }
   }
 }
