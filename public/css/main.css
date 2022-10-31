@@ -1415,8 +1415,8 @@ body {
   padding: 1rem 0rem;
   background-color: rgba(109, 93, 75, 0.4);
   display: grid;
-  grid-template-columns: repeat(6, -webkit-max-content) -webkit-min-content;
-  grid-template-columns: repeat(6, max-content) min-content;
+  grid-template-columns: repeat(6, 1fr) -webkit-min-content;
+  grid-template-columns: repeat(6, 1fr) min-content;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   border-radius: 2px;
@@ -1834,7 +1834,7 @@ body {
   background-color: #142539;
 }
 
-.logout {
+.popup {
   height: 100vh;
   width: 100%;
   background-color: #101d2c;
@@ -1850,7 +1850,7 @@ body {
   -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.15);
           box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.15);
 }
-.logout__content {
+.popup__content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, -webkit-min-content);
@@ -1864,7 +1864,7 @@ body {
   border-radius: 2px;
 }
 @media only screen and (max-width: 510px) {
-  .logout__content {
+  .popup__content {
     background-color: rgba(109, 93, 75, 0.4);
     width: 100%;
     height: 100%;
@@ -1875,7 +1875,7 @@ body {
             justify-content: center;
   }
 }
-.logout__title {
+.popup__title {
   grid-column: 1/-1;
   grid-row: 1/2;
   justify-self: center;
@@ -1885,7 +1885,13 @@ body {
   font-weight: 300;
   color: #fff;
 }
-.logout__text {
+@media only screen and (max-width: 510px) {
+  .popup__title {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+.popup__text {
   grid-column: 1/-1;
   grid-row: 2/3;
   justify-self: center;
@@ -1896,7 +1902,7 @@ body {
   color: #fff;
   text-align: center;
 }
-.logout__cancel {
+.popup__cancel {
   grid-column: 1/2;
   grid-row: 3/-1;
   justify-self: center;
@@ -1910,10 +1916,10 @@ body {
   -o-transition: all 0.2s;
   transition: all 0.2s;
 }
-.logout__cancel:hover, .logout__cancel:active {
+.popup__cancel:hover, .popup__cancel:active {
   background-color: #142539;
 }
-.logout__agree {
+.popup__agree {
   grid-column: 2/-1;
   grid-row: 3/-1;
   justify-self: center;
@@ -1927,7 +1933,7 @@ body {
   -o-transition: all 0.2s;
   transition: all 0.2s;
 }
-.logout__agree:hover, .logout__agree:active {
+.popup__agree:hover, .popup__agree:active {
   background-color: #c69963;
 }
 
@@ -1958,7 +1964,7 @@ body {
   font-weight: 600;
 }
 
-.popup {
+.changeEmail {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1970,23 +1976,12 @@ body {
           align-items: center;
   height: 100vh;
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
+  background-color: #101d2c;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
-  .popup {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-}
-.popup__content {
+.changeEmail__content {
   background-color: #6d5d4b;
   padding: 4rem;
   -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.15);
@@ -1995,18 +1990,26 @@ body {
   width: 50rem;
 }
 @media only screen and (max-width: 510px) {
-  .popup__content {
+  .changeEmail__content {
     width: 100%;
+    padding: 2rem;
   }
 }
-.popup__title {
+.changeEmail__text {
+  font-size: 1.8rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+}
+.changeEmail__title {
   text-align: center;
   color: #fff;
   font-size: 2.5rem;
   font-family: "Josefin Sans", sans-serif;
   font-weight: 300;
 }
-.popup__block {
+.changeEmail__block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2016,46 +2019,51 @@ body {
           flex-direction: column;
   margin: 2rem;
 }
-.popup__label {
+.changeEmail__label {
   font-size: 1.8rem;
   font-family: "Josefin Sans", sans-serif;
   font-weight: 300;
   color: #fff;
 }
-.popup__input {
+.changeEmail__input {
   margin-top: 1rem;
   height: 3rem;
   font-size: 1.8rem;
   font-family: "Nunito", sans-serif;
   padding-left: 1rem;
 }
-.popup__btn {
+.changeEmail__btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.popup__btn-cancel {
+.changeEmail__btn-cancel {
   background-color: #101d2c;
   color: #fff;
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
+  padding: 0.5rem 1rem;
 }
-.popup__btn-cancel:hover, .popup__btn-cancel:active {
+.changeEmail__btn-cancel:hover, .changeEmail__btn-cancel:active {
   background-color: #142539;
 }
-.popup__btn-agree {
+.changeEmail__btn-agree {
   background-color: #b28451;
   color: #fff;
   font-size: 1.8rem;
   font-weight: 300;
+  padding: 0.5rem 1rem;
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
 }
-.popup__btn-agree:hover, .popup__btn-agree:active {
+.changeEmail__btn-agree:hover, .changeEmail__btn-agree:active {
   background-color: #c69963;
 }
 

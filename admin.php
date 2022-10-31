@@ -24,23 +24,32 @@ try {
 
           if ($_GET['action'] === "confirmCreateAd") {
             (new Admin())->addAd();
-          } elseif ($_GET['action'] === "changeEmail") {
+          } elseif ($_GET['action'] === "confirmChangeEmail") {
             (new Admin())->changeEmail();
+          } elseif ($_GET['action'] === "confirmEditAd") {
+            (new Admin)->confirmEditAd();
           }
         } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
           if ($_GET['action'] === "dashboard") {
-            require('src/views/viewAdmin/dashboard.html');
+            require('src/views/viewAdmin/dashboard.php');
           } elseif ($_GET['action'] === "settings") {
+            //Permets d'afficher la page mon profil
             (new Admin())->settings();
-            require('src/views/viewAdmin/settings.html');
+          } elseif ($_GET['action'] === "changeEmail") {
+            require('src/views/viewAdmin/changeEmail.php');
           } elseif ($_GET['action'] === "createAd") {
-            require('src/views/viewAdmin/createAd.html');
-          } elseif ($_GET['action'] === "displayAd") {
+            require('src/views/viewAdmin/createAd.php');
+          } elseif ($_GET['action'] === "displayAllAd") {
             (new Admin())->loadAllAd();
-            require('src/views/viewAdmin/displayAd.html');
-          } elseif ($_GET['action'] === "logout") {
-            require('src/views/viewAdmin/logout.html');
           } elseif ($_GET['action'] === "confirmLogout") {
+            (new Admin())->confirmLogout();
+          } elseif ($_GET['action'] === "confirmDeleteAd") {
+            (new Admin())->confirmDeleteAd();
+          } elseif ($_GET['action'] === "deleteAd") {
+            (new Admin)->deleteAd();
+          } elseif ($_GET['action'] === "editAd") {
+            (new Admin())->editAd();
+          } elseif ($_GET['action'] === "logout") {
             // Permets de déconnecter l'utilisateur
             (new login())->logout();
           }
@@ -60,9 +69,10 @@ try {
     } else {
       // Permets d'afficher la page de login si aucune action n’est présente et s’il n'y a pas de statut
       // echo "test";
-      require('src/views/viewAdmin/login.html');
+      require('src/views/viewAdmin/login.php');
     }
   }
+  
 } catch (Exception $e) {
   $errorMessage =  $e->getMessage();
   echo $errorMessage;

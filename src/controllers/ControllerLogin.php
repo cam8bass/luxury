@@ -39,10 +39,7 @@ class login
       $this->modelLogin->loginUser($userAccount);
       header("location: ../../admin.php?login=true&action=dashboard");
     } else {
-      session_start();
-      $_SESSION['error'] = $errorLogin;
-      $_SESSION['email'] = $email;
-      require('src/views/viewAdmin/login.html');
+      require('src/views/viewAdmin/login.php');
     }
   }
 

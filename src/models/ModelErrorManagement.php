@@ -9,14 +9,12 @@ class ErrorManagement
 {
 
   public array $errorCreateAd = [
-    "errorImg" => "",
     "errorTitle" => "",
     "errorLocation" => "",
     "errorRoom" => "",
     "errorArea" => "",
     "errorPrice" => "",
-    "errorDescription" => ""
-
+    "errorDescription" => "",
   ];
 
   public array $errorLogin = [
@@ -28,6 +26,8 @@ class ErrorManagement
     "errorOldEmail" => "",
     "errorNewEmail" => ""
   ];
+
+  public string $errorImg = "";
 
   /**
    * check input login
@@ -97,7 +97,8 @@ class ErrorManagement
       "room" => FILTER_SANITIZE_SPECIAL_CHARS,
       "area" => FILTER_SANITIZE_SPECIAL_CHARS,
       "price" => FILTER_SANITIZE_SPECIAL_CHARS,
-      "description" => FILTER_SANITIZE_SPECIAL_CHARS
+      "description" => FILTER_SANITIZE_SPECIAL_CHARS,
+      "status" => FILTER_SANITIZE_SPECIAL_CHARS
     ]);
 
     return $allInput ?? [];
@@ -108,22 +109,22 @@ class ErrorManagement
    * @param array $img img path
    * @return string error 
    */
-  public function checkImgFile(array $img): array
+  public function checkImgFile(array $img): string
   {
     $valideImgExtension = ["jpeg", "JPEG", "png", "PNG", "jpg", "JPG"];
     if (isset($img['img'])) {
       if ($img['img']['size'] > 2097152) {
-        $this->errorCreateAd['errorImg'] = ERROR_IMG_SIZE;
+        $this->errorImg = ERROR_IMG_SIZE;
       } elseif (empty(array_filter($valideImgExtension, fn ($el) => $el === pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION)))) {
-        $this->errorCreateAd['errorImg'] = ERROR_IMG_EXTENSION;
+        $this->errorImg  = ERROR_IMG_EXTENSION;
       }
     } else {
-      $this->errorCreateAd['errorImg'] = ERROR_IMG;
+      $this->errorImg  = ERROR_IMG;
     }
-    return $this->errorCreateAd;
+    return   $this->errorImg ;
   }
 
-  public function checkAllInputCreateAd(array $allInput, array $img): array
+  public function checkAllInputCreateAd(array $allInput): array
   {
     $title = $allInput['title'] ?? "";
     $location = $allInput['location'] ?? "";
@@ -132,8 +133,7 @@ class ErrorManagement
     $price = $allInput['price'] ?? "";
     $description = $allInput['description'] ?? "";
 
-    //Permet de vérifier l'image
-    $this->checkImgFile($img);
+
     //Permet de vérifier la conformité du titre 
     $this->checkErrorTitle($title);
     //Permets de vérifier l'input location
@@ -141,16 +141,16 @@ class ErrorManagement
 
     if (is_numeric($room)) {
       //Permets de vérifier input room
-      $this->checkErrorRoom((int)$room);
+      $this->checkErrorRoom($room);
     } else {
-      $this->errorCreateAd["errorRoom"] = "Veuillez rentrer un nombre";
+      $this->errorCreateAd["errorRoom"] = "Veuillez rentrer un nombre entier";
     }
 
     if (is_numeric($area)) {
       // Permets de vérifier la superficie
       $this->checkErrorArea((int)$area);
     } else {
-      $this->errorCreateAd["errorArea"] = "Veuillez rentrer un nombre";
+      $this->errorCreateAd["errorArea"] = "Veuillez rentrer un nombre entier";
     }
 
     if (is_numeric($price)) {
@@ -188,7 +188,7 @@ class ErrorManagement
       $this->errorCreateAd['errorTitle'] = "Ce champ accepte au maximum 20 caractères";
     }
 
-    if ($number) {
+    if (is_numeric($title) || $number) {
       $this->errorCreateAd['errorTitle'] = ERROR_INPUT_NUMBER;
     }
 
@@ -228,7 +228,7 @@ class ErrorManagement
    * @param int $room
    * @return array error room
    */
-  public function checkErrorRoom(int $room): array
+  public function checkErrorRoom($room): array
   {
 
     if (!$room) {
@@ -333,5 +333,16 @@ class ErrorManagement
     }
 
     return $this->errorChangeEmail;
+  }
+
+  public function checkErrorStatus(string $status)
+  {
+    $validStatus = ['Available', 'Sold'];
+    $error = "";
+    if (!in_array($status, $validStatus, true)) {
+      $error = ERROR_EMPTY;
+    }
+
+    return $error;
   }
 }

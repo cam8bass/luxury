@@ -10,6 +10,7 @@ use App\database\Database\DatabaseConnection;
 use App\models\ModelAdmin\ModelAdmin;
 use App\models\ModelLogin\ModelLogin;
 use App\models\ModelErrorManagement\ErrorManagement;
+use Exception;
 
 class Admin
 {
@@ -25,13 +26,13 @@ class Admin
   public function settings()
   {
     $profile = $this->modelAdmin->userProfile();
-    $_SESSION['userProfile'] = $profile ?? [];
+    require("src/views/viewAdmin/settings.php");
   }
 
   public function loadAllAd()
   {
-    $allAdd = $this->modelAdmin->selectAllAd();
-    $_SESSION['allAd'] = $allAdd ?? [];
+    $allAd = $this->modelAdmin->selectAllAd();
+    require('src/views/viewAdmin/displayAllAd.php');
   }
 
   public function addAd()
@@ -39,8 +40,11 @@ class Admin
     // Permets de nettoyer le formulaire de création 
     $allInput = $this->errorManagement->sanatizeCreateForm($_POST);
     // Permet de vérifier le formulaire
-    $errorInput = $this->errorManagement->checkAllInputCreateAd($allInput, $_FILES);
-    if (empty(array_filter($errorInput, fn ($el) => $el != ''))) {
+    $errorInput = $this->errorManagement->checkAllInputCreateAd($_POST);
+    //Permet de vérifier l'image
+    $errorImg = $this->errorManagement->checkImgFile($_FILES);
+
+    if (empty(array_filter($errorInput, fn ($el) => $el != '')) && !$errorImg) {
       // Permets d'enregistrer l'image dans le dossier 
       $newImgPath = $this->modelAdmin->saveNewImg($_FILES);
       // Permets d'enregistrer la nouvelle annonce
@@ -49,9 +53,7 @@ class Admin
       // afficher page success
       header('location: admin.php?login=true&action=dashboard');
     } else {
-      $_SESSION['allInput'] = $allInput;
-      $_SESSION['errorCreateAd'] = $errorInput;
-      header("location:admin.php?login=true&action=createAd");
+      require('src/views/viewAdmin/createAd.php');
     }
   }
 
@@ -69,13 +71,74 @@ class Admin
       $this->modelAdmin->updateEmail($newEmail, $oldUserEmail['email']);
       header("location: admin.php?login=true&action=dashboard");
     } else {
-      // afficher page d'erreur
-      // a voir
+      require('src/views/viewAdmin/changeEmail.php');
+    }
+  }
 
-      $_SESSION['errorInputEmail'] = $errorInput;
-      // $_SESSION['userProfile'] = $errorInput;
+  public function editAd()
+  {
+    $idAd = $_GET['id'] ?? "";
+    $infoAd = $this->modelAdmin->retrieveAdWithId($idAd);
+    require('src/views/viewAdmin/editAd.php');
+  }
 
-      header("location: admin.php?login=true&action=settings");
+  public function confirmEditAd()
+  {
+    $requestType = "editAd";
+    $idAd = $_GET['id'] ?? "";
+    // Permets de nettoyer le formulaire de création 
+    $allInput = $this->errorManagement->sanatizeCreateForm($_POST);
+    // Permet de vérifier le formulaire
+    $errorInput = $this->errorManagement->checkAllInputCreateAd($_POST);
+
+    $errorStatus = $this->errorManagement->checkErrorStatus($allInput['status'] ?? "");
+    if ($errorStatus) {
+      $errorInput['errorStatus'] = $errorStatus;
+    }
+
+
+    if (empty(array_filter($errorInput, fn ($el) => $el != '')) && !$errorStatus) {
+
+      // Permets de mettre à jour l'annonce dans la bdd
+      $saveEdit = $this->modelAdmin->editAd($allInput, $idAd);
+
+
+      if ($saveEdit) {
+        header("location: admin.php?login=true&action=dashboard");
+      } else {
+        throw new Exception("a écrire");
+      }
+    } else {
+      require('src/views/viewAdmin/editAd.php');
+    }
+  }
+
+  public function confirmDeleteAd()
+  {
+    $requestType = "deleteAd";
+    $idAd = $_GET['id'] ?? "";
+    $_SESSION['idAd'] = $idAd;
+    require('src/views/viewAdmin/confirmPage.php');
+  }
+
+  public function confirmLogout()
+  {
+    $requestType = "logout";
+    require('src/views/viewAdmin/confirmPage.php');
+  }
+
+  public function deleteAd()
+  {
+    $idAd = $_GET['id'] ?? "";
+    $imgAd = $this->modelAdmin->retrieveImg($idAd);
+    // Permets de supprimer l'image de l'annonce
+    $deleteAd = $this->modelAdmin->deleteAd($idAd);
+
+    if ($deleteAd) {
+      $this->modelAdmin->deleteOldImg($imgAd['img']);
+      header("location: admin.php?login=true&action=dashboard");
+    } else {
+      throw new Exception("à écrire");
     }
   }
 }

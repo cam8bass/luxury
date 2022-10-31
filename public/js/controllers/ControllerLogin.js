@@ -31,18 +31,12 @@ class ControleLogin {
       }
     });
   }
-
-  checkLoginSubmit = async function () {
-    const [email, error] = await modelLogin.checkErrorLoginSubmit();
-    viewLogin.displayErrorSubmit(email, error);
-  };
 }
 
 const controleLogin = new ControleLogin();
-//
+
 const init = function () {
   controleLogin.checkLogin();
-  controleLogin.checkLoginSubmit();
 };
 
 init();

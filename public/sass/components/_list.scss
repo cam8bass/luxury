@@ -1,8 +1,6 @@
 .list {
   width: 95%;
-//   grid-column: 1/-1;
-//   grid-row: 2/3;
-//  justify-self: center;
+
   @media only screen and (max-width: $tab) {
     width: 100%;
     align-self: flex-start;
@@ -11,7 +9,7 @@
     padding: 1rem 0rem;
     background-color: rgba($color-grey-dark-2, 0.4);
     display: grid;
-    grid-template-columns: repeat(6, max-content) min-content;
+    grid-template-columns: repeat(6, 1fr) min-content;
     justify-content: space-around;
     border-radius: 2px;
     align-items: center;

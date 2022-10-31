@@ -3,10 +3,6 @@ import viewCreateAd from "../views/ViewCreateAd.js";
 
 class ControleCreateAd {
   checkFormCreate() {
-    viewCreateAd._inputImg.addEventListener("change", function () {
-      modelCreateAd.validInputImg(this, viewCreateAd._errorImg);
-    });
-
     viewCreateAd._inputTitle.addEventListener("change", function () {
       modelCreateAd.validInputTitle(this, viewCreateAd._errorTitle);
     });
@@ -34,10 +30,7 @@ class ControleCreateAd {
     viewCreateAd._parentElement.addEventListener("submit", function (e) {
       e.preventDefault();
       if (
-        modelCreateAd.validInputImg(
-          viewCreateAd._inputImg,
-          viewCreateAd._errorImg
-        ) &&
+      
         modelCreateAd.validInputTitle(
           viewCreateAd._inputTitle,
           viewCreateAd._errorTitle

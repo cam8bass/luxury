@@ -56,17 +56,23 @@ class ModelAdmin
     return $statementRetrieveEmail->fetch();
   }
 
+  public function retrieveImg(string $idAd): array
+  {
+    $statementRetrieveImg = $this->dbh->connectDb()->prepare("SELECT img FROM ad WHERE idAd=$idAd");
+    $statementRetrieveImg->execute();
+    return $statementRetrieveImg->fetch();
+  }
+
   /**
    * delete ad
    * @param string $idAd 
    * @return bool 
    */
-  public function deleteAd(string $idAd): bool
+  public function deleteAd(string $idAd)
   {
-    $statementDeleteAd = $this->dbh->connectDb()->prepare("DELETE * FROM ad WHERE idAd=:id");
+    $statementDeleteAd = $this->dbh->connectDb()->prepare("DELETE FROM ad WHERE idAd=:id ");
     $statementDeleteAd->bindValue(":id", $idAd);
-    $statementDeleteAd->execute();
-    return $statementDeleteAd->fetch(PDO::FETCH_BOUND);
+    return $statementDeleteAd->execute();
   }
 
   /**
@@ -76,7 +82,7 @@ class ModelAdmin
   public function addAd(array $newAd, string $img): bool
   {
     $statementAddAd = $this->dbh->connectDb()->prepare("INSERT INTO ad VALUES(
-      DEFAULT,
+    DEFAULT,
       :status,
       :img,
       :title,
@@ -86,16 +92,63 @@ class ModelAdmin
       :location,
       :description
     )");
-    $statementAddAd->bindValue(":status", "available");
+    $statementAddAd->bindValue(":status", "Available");
     $statementAddAd->bindValue(":img", $img);
-    $statementAddAd->bindValue(":title", $newAd['title']);
-    $statementAddAd->bindValue(":area", $newAd['area']);
-    $statementAddAd->bindValue(":room", $newAd['room']);
-    $statementAddAd->bindValue(":price", $newAd['price']);
-    $statementAddAd->bindValue(":location", $newAd['location']);
-    $statementAddAd->bindValue(":description", $newAd['description']);
-    $statementAddAd->execute();
-    return $statementAddAd->fetch();
+    $statementAddAd->bindValue(":title", ucfirst(strtolower(trim($newAd['title']))));
+    $statementAddAd->bindValue(":area", ucfirst(strtolower(trim($newAd['area']))));
+    $statementAddAd->bindValue(":room", ucfirst(strtolower(trim($newAd['room']))));
+    $statementAddAd->bindValue(":price", ucfirst(strtolower(trim($newAd['price']))));
+    $statementAddAd->bindValue(":location", ucfirst(strtolower(trim($newAd['location']))));
+    $statementAddAd->bindValue(":description", ucfirst(trim($newAd['description'])));
+    return $statementAddAd->execute();
+  }
+
+  // public function editAd(array $updateAd, string $img, string $id): bool
+  // {
+  //   $statementEditAd = $this->dbh->connectDb()->prepare("UPDATE ad SET 
+  //  status=:newStatus,
+  //   img=:newImg,
+  //   title=:newTitle,
+  //   area=:newArea,
+  //   room=:newRoom,
+  //   price=:newPrice,
+  //   location=:newLocation,
+  //   description=:newDescription
+  //   WHERE idAd=$id
+  //   ");
+  //   $statementEditAd->bindValue(":newStatus", ucfirst(strtolower(trim($updateAd['status']))));
+  //   $statementEditAd->bindValue(":newImg", $img);
+  //   $statementEditAd->bindValue(":newTitle", ucfirst(strtolower(trim($updateAd['title']))));
+  //   $statementEditAd->bindValue(":newArea", ucfirst(strtolower(trim($updateAd['area']))));
+  //   $statementEditAd->bindValue(":newRoom", ucfirst(strtolower(trim($updateAd['room']))));
+  //   $statementEditAd->bindValue(":newPrice", ucfirst(strtolower(trim($updateAd['price']))));
+  //   $statementEditAd->bindValue(":newLocation", ucfirst(strtolower(trim($updateAd['location']))));
+  //   $statementEditAd->bindValue(":newDescription", ucfirst(strtolower(trim($updateAd['description']))));
+
+  //   return $statementEditAd->execute();
+  // }
+
+  public function editAd(array $updateAd,  string $id): bool
+  {
+    $statementEditAd = $this->dbh->connectDb()->prepare("UPDATE ad SET 
+   status=:newStatus,
+    title=:newTitle,
+    area=:newArea,
+    room=:newRoom,
+    price=:newPrice,
+    location=:newLocation,
+    description=:newDescription
+    WHERE idAd=$id
+    ");
+    $statementEditAd->bindValue(":newStatus", ucfirst(strtolower(trim($updateAd['status']))));
+    $statementEditAd->bindValue(":newTitle", ucfirst(strtolower(trim($updateAd['title']))));
+    $statementEditAd->bindValue(":newArea", ucfirst(strtolower(trim($updateAd['area']))));
+    $statementEditAd->bindValue(":newRoom", ucfirst(strtolower(trim($updateAd['room']))));
+    $statementEditAd->bindValue(":newPrice", ucfirst(strtolower(trim($updateAd['price']))));
+    $statementEditAd->bindValue(":newLocation", ucfirst(strtolower(trim($updateAd['location']))));
+    $statementEditAd->bindValue(":newDescription", ucfirst(strtolower(trim($updateAd['description']))));
+
+    return $statementEditAd->execute();
   }
 
   public function updateEmail(string $newEmail, string $oldUserEmail)
@@ -116,5 +169,14 @@ class ModelAdmin
     // Permets de sauvegarder la nouvelle image
     move_uploaded_file($img['img']['tmp_name'], $this->imgPath . $newImgName);
     return $this->imgPath . $newImgName;
+  }
+
+  /**
+   * delete old user image
+   * @param string $oldImgName path old img
+   */
+  public function deleteOldImg(string $oldImgName)
+  {
+    unlink($oldImgName);
   }
 }

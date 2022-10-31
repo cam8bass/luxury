@@ -1,4 +1,4 @@
-import { AJAX } from "../helper.js";
+
 
 class ModelCreateAd {
   //img
@@ -179,11 +179,7 @@ class ModelCreateAd {
     }
   }
 
-  checkErrorCreateAdSubmit = async function () {
 
-    const [allInput, allErrors] = (await AJAX("src/config/ajax/ajaxCreateAd.php"));
-    return [allInput, allErrors];
-  };
 }
 
 export default new ModelCreateAd();
