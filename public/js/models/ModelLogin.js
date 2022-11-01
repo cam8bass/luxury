@@ -1,4 +1,4 @@
-import { AJAX } from "../helper.js";
+// import { AJAX } from "../helper.js";
 
 class ModelLogin {
   /**
@@ -61,11 +61,11 @@ class ModelLogin {
     }
   }
 
-  checkErrorLoginSubmit = async function () {
-    const [email, inputError] = await AJAX("src/config/ajax/ajaxLogin.php");
-    return [email, inputError];
+  // checkErrorLoginSubmit = async function () {
+  //   const [email, inputError] = await AJAX("src/config/ajax/ajaxLogin.php");
+  //   return [email, inputError];
 
-  };
+  // };
 }
 
 export default new ModelLogin();

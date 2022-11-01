@@ -1,9 +1,10 @@
 .homes {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
-  grid-gap: 7rem;
-
+  grid-template-columns: repeat(auto-fit, minmax(min-content,50rem));
+  justify-content: center;
+  align-items: center;
+  grid-gap: 4rem;
   margin: 4rem 0;
   @media only screen and (max-width: $tab) {
     grid-gap: 3rem;

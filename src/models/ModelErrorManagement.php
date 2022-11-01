@@ -184,8 +184,8 @@ class ErrorManagement
       $this->errorCreateAd['errorTitle'] = "Ce champ accepte au minimum 5 caractères";
     }
 
-    if (mb_strlen($title) > 20) {
-      $this->errorCreateAd['errorTitle'] = "Ce champ accepte au maximum 20 caractères";
+    if (mb_strlen($title) > 23) {
+      $this->errorCreateAd['errorTitle'] = "Ce champ accepte au maximum 23 caractères";
     }
 
     if (is_numeric($title) || $number) {
@@ -216,8 +216,8 @@ class ErrorManagement
       $this->errorCreateAd['errorLocation'] = "Ce champ accepte au minimum 2 caractères";
     }
 
-    if (mb_strlen($location) > 10) {
-      $this->errorCreateAd['errorLocation'] = "Ce champ accepte au maximum 10 caractères";
+    if (mb_strlen($location) > 15) {
+      $this->errorCreateAd['errorLocation'] = "Ce champ accepte au maximum 15 caractères";
     }
 
     return $this->errorCreateAd;
@@ -285,8 +285,8 @@ class ErrorManagement
       $this->errorCreateAd['errorPrice'] = "Veuillez renseigner un numéro supérieur à 0";
     }
 
-    if ($price > 9999999999) {
-      $this->errorCreateAd['errorPrice'] = "Ce champ accepte au maximum 10 chiffres";
+    if ($price > 999999999) {
+      $this->errorCreateAd['errorPrice'] = "Ce champ accepte au maximum 9 chiffres";
     }
 
     return $this->errorCreateAd;

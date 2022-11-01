@@ -4,7 +4,9 @@ import viewAd from "../views/ViewAd.js";
 class ControleAd {
   displayAd = async function () {
     const allAd = await modelAd.loadAllAd();
-    console.log(allAd);
+    viewAd.displayAllAd(allAd);
+
+
   };
 }
 

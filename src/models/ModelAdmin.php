@@ -103,31 +103,6 @@ class ModelAdmin
     return $statementAddAd->execute();
   }
 
-  // public function editAd(array $updateAd, string $img, string $id): bool
-  // {
-  //   $statementEditAd = $this->dbh->connectDb()->prepare("UPDATE ad SET 
-  //  status=:newStatus,
-  //   img=:newImg,
-  //   title=:newTitle,
-  //   area=:newArea,
-  //   room=:newRoom,
-  //   price=:newPrice,
-  //   location=:newLocation,
-  //   description=:newDescription
-  //   WHERE idAd=$id
-  //   ");
-  //   $statementEditAd->bindValue(":newStatus", ucfirst(strtolower(trim($updateAd['status']))));
-  //   $statementEditAd->bindValue(":newImg", $img);
-  //   $statementEditAd->bindValue(":newTitle", ucfirst(strtolower(trim($updateAd['title']))));
-  //   $statementEditAd->bindValue(":newArea", ucfirst(strtolower(trim($updateAd['area']))));
-  //   $statementEditAd->bindValue(":newRoom", ucfirst(strtolower(trim($updateAd['room']))));
-  //   $statementEditAd->bindValue(":newPrice", ucfirst(strtolower(trim($updateAd['price']))));
-  //   $statementEditAd->bindValue(":newLocation", ucfirst(strtolower(trim($updateAd['location']))));
-  //   $statementEditAd->bindValue(":newDescription", ucfirst(strtolower(trim($updateAd['description']))));
-
-  //   return $statementEditAd->execute();
-  // }
-
   public function editAd(array $updateAd,  string $id): bool
   {
     $statementEditAd = $this->dbh->connectDb()->prepare("UPDATE ad SET 

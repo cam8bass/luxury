@@ -7,15 +7,15 @@ if ($requestType === "deleteAd") {
   $title = "Supprimer annonce";
   $popupTitle = "Suppression de l'annonce";
   $popupText = "Êtes-vous sûr de vouloir surprimer cette annonce ?";
-  $popupLinkCancel = "../../admin.php?login=true&action=displayAllAd";
-  $popupLinkAgree = "../../admin.php?login=true&action=deleteAd&id=$idAd";
+  $popupLinkCancel = "admin?login=true&action=displayAllAd";
+  $popupLinkAgree = "admin?login=true&action=deleteAd&id=$idAd";
 } elseif ($requestType === "logout") {
   // Permet de remplir la page de confirmation de déconnexion
   $title = "Deconnexion";
   $popupTitle = "Deconnexion";
   $popupText = "Êtes-vous sur de vouloir vous déconnecter?";
-  $popupLinkCancel = "../../admin.php?login=true&action=dashboard";
-  $popupLinkAgree = "../../admin.php?login=true&action=logout";
+  $popupLinkCancel = "admin?login=true&action=dashboard";
+  $popupLinkAgree = "admin?login=true&action=logout";
 }
 
 

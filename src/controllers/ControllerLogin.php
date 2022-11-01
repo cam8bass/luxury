@@ -37,7 +37,8 @@ class login
 
     if (empty(array_filter($errorLogin, fn ($el) => $el !== ""))) {
       $this->modelLogin->loginUser($userAccount);
-      header("location: ../../admin.php?login=true&action=dashboard");
+      header("location: admin?login=true&action=dashboard");
+
     } else {
       require('src/views/viewAdmin/login.php');
     }
@@ -66,6 +67,6 @@ class login
   {
     $idSession = $_COOKIE["session"] ?? "";
     $this->modelLogin->userLogout($idSession);
-    header("location: ../../admin.php");
+    header("location: admin");
   }
 }

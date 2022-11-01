@@ -24,8 +24,8 @@ class ModelCreateAd {
       message = "Ce champ accepte au minimum 5 caractères";
       error.textContent = message;
       return false;
-    } else if (input.value.length > 20) {
-      message = "Ce champ accepte au maximum 20 caractères";
+    } else if (input.value.length > 23) {
+      message = "Ce champ accepte au maximum 23 caractères";
       error.textContent = message;
       return false;
     } else if (/[0-9]/.test(input.value)) {
@@ -52,7 +52,7 @@ class ModelCreateAd {
       message = "Ce champ accepte au minimum 2 caractères";
       error.textContent = message;
       return false;
-    } else if (input.value.length > 10) {
+    } else if (input.value.length > 15) {
       message = "Ce champ accepte au maximum 10 caractères";
       error.textContent = message;
       return false;
@@ -136,8 +136,8 @@ class ModelCreateAd {
       message = "Ce champ n'accepte pas les lettres";
       error.textContent = message;
       return false;
-    } else if (input.value.length > 10) {
-      message = "Ce champ accepte au maximum 10 chiffres";
+    } else if (input.value.length > 9) {
+      message = "Ce champ accepte au maximum 9 chiffres";
       error.textContent = message;
       return false;
     } else if (input.value <= 0) {

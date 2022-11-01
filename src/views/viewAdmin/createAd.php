@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
   <div class="content content__edit">
     <h1 class="edit__title">Créer une annonce</h1>
 
-    <form action="admin.php?login=true&action=confirmCreateAd" method="POST" class="edit" id="form-createAd" enctype="multipart/form-data">
+    <form action="index.php?login=true&action=confirmCreateAd" method="POST" class="edit" id="form-createAd" enctype="multipart/form-data">
       <div class="edit__block">
         <label for="img" class="edit__label">Image:</label>
         <input type="file" name="img" id="input-img" class="edit__input-file" />
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
       <div class="edit__block">
         <label for="title" class="edit__label">Titre:</label>
-        <input type="text" name="title" id="input-title" class="edit__input" maxlength="20" value="<?= !$errorInput['errorTitle'] ? $allInput['title'] : "" ?>" />
+        <input type="text" name="title" id="input-title" class="edit__input" maxlength="23" value="<?= !$errorInput['errorTitle'] ? $allInput['title'] : "" ?>" />
 
         <div class="login__error">
           <span id="error-title" class="login__error-text"><?= $errorInput['errorTitle'] ? $errorInput['errorTitle'] : "" ?></span>
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
       <div class="edit__block">
         <label for="location" class="edit__label">Ville:</label>
-        <input type="text" name="location" id="input-location" class="edit__input" maxlength="10" value="<?= !$errorInput['errorLocation'] ? $allInput['location'] : "" ?>" />
+        <input type="text" name="location" id="input-location" class="edit__input" maxlength="15" value="<?= !$errorInput['errorLocation'] ? $allInput['location'] : "" ?>" />
 
         <div class="login__error">
           <span id="error-location" class="login__error-text"><?= $errorInput['errorLocation'] ? $errorInput["errorLocation"] : "" ?></span>
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
       <div class="edit__block">
         <label for="price" class="edit__label">Prix:</label>
-        <input type="text" name="price" id="input-price" class="edit__input" maxlength="10" value="<?= !$errorInput['errorPrice'] ? $allInput['price'] : "" ?>" />
+        <input type="text" name="price" id="input-price" class="edit__input" maxlength="9" value="<?= !$errorInput['errorPrice'] ? $allInput['price'] : "" ?>" />
         <div class="login__error">
           <span id="error-price" class="login__error-text"><?= $errorInput['errorPrice'] ? $errorInput["errorPrice"] : "" ?></span>
         </div>

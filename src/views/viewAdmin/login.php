@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 <main class="page__login">
   <section class="login">
     <img src="public/img/logo-luxury.png" alt="logo" s class="login__logo" />
-    <form action="admin.php?login=false&action=login" method="post" class="login__form" id="form-login">
+    <form action="index.php?login=false&action=login" method="post" class="login__form" id="form-login">
       <div class="login__block">
         <label for="email" class="form__label">Adresse email</label>
         <input type="email" name="email" id="email" class="login__input" value="<?= !$errorLogin['errorEmail'] ? $email : "" ?>" />
@@ -43,4 +43,5 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 </main>
 
 <?php $content = ob_get_clean() ?>
+
 <?php require('templates/layout.php') ?>

@@ -2,7 +2,7 @@
 
 <?php ob_start() ?>
 
-<!-- <script defer type="module" src="public/js/controllers/ControllerAllAd.js"></script> -->
+<script defer type="module" src="public/js/controllers/ControllerAllAd.js"></script>
 
 <body class="page__dashboard page__displayAd">
 
@@ -35,10 +35,10 @@
           </div>
 
           <div class="list__btn">
-            <a href="admin.php?login=true&action=editAd&id=<?= $ad['idAd'] ?>" class="list__btn-modify">
+            <a href="index.php?login=true&action=editAd&id=<?= $ad['idAd'] ?>" class="list__btn-modify">
               <img src="public/img/icons/icon-edit.png" alt="icon edit" class="list__btn-icon" />
             </a>
-            <a href="admin.php?login=true&action=confirmDeleteAd&id=<?= $ad['idAd'] ?>" class="list__btn-remove" id="btn-delete">
+            <a href="index.php?login=true&action=confirmDeleteAd&id=<?= $ad['idAd'] ?>" class="list__btn-remove" id="btn-delete">
               <img src="public/img/icons/icon-delete.png" alt="icon delete" class="list__btn-icon" />
             </a>
           </div>

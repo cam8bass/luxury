@@ -20,7 +20,7 @@
         <div class="profile__block">
           <p class="profile__label">Email:</p>
           <p class="profile__text" id="email"><?= $profile['email'] ?></p>
-          <a href="admin.php?login=true&action=changeEmail" class="profile__btn" id="edit-email">
+          <a href="index.php?login=true&action=changeEmail" class="profile__btn" id="edit-email">
             <img src="public/img/icons/icon-edit.png" alt="icon edit" class="profile__btn-icon" />
           </a>
         </div>

@@ -33,19 +33,19 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
   <?php require_once('includes/sidebar.php') ?>
   <div class="content content__edit">
     <h1 class="edit__title">Modifier mon annonce</h1>
-    
+
     <?php if (isset($infoAd['idAd'])) : ?>
-      <form action="admin.php?login=true&action=confirmEditAd&id=<?= $infoAd['idAd'] ?? "" ?>" id="form-createAd" method="POST" class="edit" >
+      <form action="index.php?login=true&action=confirmEditAd&id=<?= $infoAd['idAd'] ?? "" ?>" id="form-createAd" method="POST" class="edit">
       <?php else : ?>
-        <form action="admin.php?login=true&action=confirmEditAd&id=<?= $idAd ?? "" ?>" id="form-createAd" method="POST" class="edit" >
+        <form action="index.php?login=true&action=confirmEditAd&id=<?= $idAd ?? "" ?>" id="form-createAd" method="POST" class="edit">
         <?php endif ?>
 
         <div class="edit__block">
           <label for="title" class="edit__label">Titre:</label>
           <?php if (isset($infoAd['title'])) : ?>
-            <input type="text" name="title" id="input-title" class="edit__input" maxlength="20" value="<?= $infoAd['title'] ?? "" ?>" />
+            <input type="text" name="title" id="input-title" class="edit__input" maxlength="23" value="<?= $infoAd['title'] ?? "" ?>" />
           <?php else : ?>
-            <input type="text" name="title" id="input-title" class="edit__input" maxlength="20" value="<?= !$errorInput["errorTitle"] ? $allInput['title'] : "" ?>" />
+            <input type="text" name="title" id="input-title" class="edit__input" maxlength="23" value="<?= !$errorInput["errorTitle"] ? $allInput['title'] : "" ?>" />
           <?php endif ?>
           <div class="login__error">
             <span id="error-title" class="login__error-text"><?= $errorInput['errorTitle'] ? $errorInput['errorTitle'] : "" ?></span>
@@ -55,9 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         <div class="edit__block">
           <label for="location" class="edit__label">Pays:</label>
           <?php if (isset($infoAd['location'])) : ?>
-            <input type="text" name="location" id="input-location" class="edit__input" maxlength="10" value="<?= $infoAd["location"] ?? "" ?>" />
+            <input type="text" name="location" id="input-location" class="edit__input" maxlength="15" value="<?= $infoAd["location"] ?? "" ?>" />
           <?php else : ?>
-            <input type="text" name="location" id="input-location" class="edit__input" maxlength="10" value="<?= !$errorInput["errorLocation"] ? $allInput['location'] : "" ?>" />
+            <input type="text" name="location" id="input-location" class="edit__input" maxlength="15" value="<?= !$errorInput["errorLocation"] ? $allInput['location'] : "" ?>" />
           <?php endif ?>
           <div class="login__error">
             <span id="error-location" class="login__error-text"><?= $errorInput['errorLocation'] ? $errorInput["errorLocation"] : "" ?></span>
@@ -92,9 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         <div class="edit__block">
           <label for="price" class="edit__label">Prix:</label>
           <?php if (isset($infoAd['price'])) : ?>
-            <input type="text" name="price" id="input-price" class="edit__input" maxlength="10" value="<?= $infoAd['price'] ?? '' ?>" />
+            <input type="text" name="price" id="input-price" class="edit__input" maxlength="9" value="<?= $infoAd['price'] ?? '' ?>" />
           <?php else : ?>
-            <input type="text" name="price" id="input-price" class="edit__input" maxlength="10" value="<?= !$errorInput["errorPrice"] ? $allInput['price'] : "" ?>" />
+            <input type="text" name="price" id="input-price" class="edit__input" maxlength="9" value="<?= !$errorInput["errorPrice"] ? $allInput['price'] : "" ?>" />
           <?php endif ?>
 
           <div class="login__error">

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
 <?php ob_start() ?>
 
-<form action="admin.php?login=true&action=confirmChangeEmail" method="post" class="changeEmail" id="form-changeEmail">
+<form action="index.php?login=true&action=confirmChangeEmail" method="post" class="changeEmail" id="form-changeEmail">
   <div class="changeEmail__content">
     <h4 class="changeEmail__title">Changement email</h4>
     <div class="changeEmail__block">
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
       </div>
     </div>
     <div class="changeEmail__btn">
-      <a href="admin.php?login=true&action=settings" class="btn changeEmail__btn-cancel">
+      <a href="index.php?login=true&action=settings" class="btn changeEmail__btn-cancel">
         Annuler
       </a>
       <button type="submit" class="btn changeEmail__btn-agree">Confirmer</button>

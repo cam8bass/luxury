@@ -8,7 +8,7 @@ require_once('src/models/ModelErrorManagement.php');
 
 use App\database\Database\DatabaseConnection;
 use App\models\ModelAdmin\ModelAdmin;
-use App\models\ModelLogin\ModelLogin;
+
 use App\models\ModelErrorManagement\ErrorManagement;
 use Exception;
 
@@ -51,7 +51,7 @@ class Admin
       $saveNewAd = $this->modelAdmin->addAd($allInput, $newImgPath);
 
       // afficher page success
-      header('location: admin.php?login=true&action=dashboard');
+      header('location: admin?login=true&action=dashboard');
     } else {
       require('src/views/viewAdmin/createAd.php');
     }
@@ -69,7 +69,7 @@ class Admin
     if (empty(array_filter($errorInput, fn ($el) => $el != ''))) {
       // Permets d'enregistrer dans la Bdd la nouvelle adresse email
       $this->modelAdmin->updateEmail($newEmail, $oldUserEmail['email']);
-      header("location: admin.php?login=true&action=dashboard");
+      header("location: admin?login=true&action=dashboard");
     } else {
       require('src/views/viewAdmin/changeEmail.php');
     }
@@ -104,7 +104,7 @@ class Admin
 
 
       if ($saveEdit) {
-        header("location: admin.php?login=true&action=dashboard");
+        header("location: admin?login=true&action=dashboard");
       } else {
         throw new Exception("a écrire");
       }
@@ -136,7 +136,7 @@ class Admin
 
     if ($deleteAd) {
       $this->modelAdmin->deleteOldImg($imgAd['img']);
-      header("location: admin.php?login=true&action=dashboard");
+      header("location: admin?login=true&action=dashboard");
     } else {
       throw new Exception("à écrire");
     }
