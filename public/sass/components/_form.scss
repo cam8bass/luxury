@@ -11,16 +11,12 @@
   padding: 2rem;
   background-color: rgba($color-secondary, 0.2);
   display: grid;
-  grid-template-rows: repeat(5, min-content);
+  grid-template-rows: repeat(4, min-content);
   grid-template-columns: 1fr;
   row-gap: 2rem;
   justify-content: center;
   @media only screen and (max-width: $tab) {
     width: 100%;
-  }
-
-  &__block {
-
   }
 
   &__label {
@@ -47,21 +43,6 @@
     @include boxShadow;
   }
 
-  &__select {
-    height: 3rem;
-    width: 30rem;
-    background-color: rgba($color-grey-dark-2, 0.8);
-    border: none;
-    border-radius: 2px;
-    font-size: 1.8rem;
-    font-family: $font-primary;
-    font-weight: 300;
-    @include boxShadow;
-    @media only screen and (max-width: $tab) {
-      width: 50%;
-    }
-  }
-
   &__message {
     width: 100%;
     height: 20rem;
@@ -74,6 +55,7 @@
     font-weight: 300;
     @include boxShadow;
     color: #fff;
+    resize: vertical;
   }
 
   &__btn {

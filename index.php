@@ -68,7 +68,7 @@
         (new User())->allAd();
         require('src/views/viewUser/ad.html');
       } elseif ($_SERVER['REQUEST_URI'] === "/contact") {
-        require('src/views/viewUser/contact.html');
+        require('src/views/viewUser/contact.php');
       } elseif ($_SERVER['REQUEST_URI'] === "/admin") {
         // Permets de récupérer la session de l'utilisateur pour une durée de 14 jours 
         $currentUser = (new login())->alreadyLoggin();
@@ -80,6 +80,9 @@
           require('src/views/viewAdmin/login.php');
         }
       }
+    } elseif (!isset($_GET['login']) && $_GET['action'] === 'sendEmail') {
+      // Mettre en place l'envoie d'email
+      (new User)->sendEmail();
     }
   } catch (Exception $e) {
     $errorMessage =  $e->getMessage();
