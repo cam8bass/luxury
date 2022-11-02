@@ -29,9 +29,12 @@
               (new Admin())->changeEmail();
             } elseif ($_GET['action'] === "confirmEditAd") {
               (new Admin)->confirmEditAd();
+            } else {
+              throw new Exception(ERROR_REDIRECT);
             }
           } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if ($_GET['action'] === "dashboard") {
+              (new Admin())->cleanSession();
               require('src/views/viewAdmin/dashboard.php');
             } elseif ($_GET['action'] === "settings") {
               //Permets d'afficher la page mon profil
@@ -53,6 +56,8 @@
             } elseif ($_GET['action'] === "logout") {
               // Permets de déconnecter l'utilisateur
               (new login())->logout();
+            } else {
+              throw new Exception(ERROR_REDIRECT);
             }
           }
         } else {
@@ -86,5 +91,5 @@
     }
   } catch (Exception $e) {
     $errorMessage =  $e->getMessage();
-    echo $errorMessage;
+    require('templates/layoutError.php');
   }

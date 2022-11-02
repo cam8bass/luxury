@@ -49,9 +49,9 @@ class Admin
       $newImgPath = $this->modelAdmin->saveNewImg($_FILES);
       // Permets d'enregistrer la nouvelle annonce
       $saveNewAd = $this->modelAdmin->addAd($allInput, $newImgPath);
-
       // afficher page success
-      header('location: admin?login=true&action=dashboard');
+      $requestType = "addAd";
+      require('src/views/ViewNotification.php');
     } else {
       require('src/views/viewAdmin/createAd.php');
     }
@@ -69,7 +69,8 @@ class Admin
     if (empty(array_filter($errorInput, fn ($el) => $el != ''))) {
       // Permets d'enregistrer dans la Bdd la nouvelle adresse email
       $this->modelAdmin->updateEmail($newEmail, $oldUserEmail['email']);
-      header("location: admin?login=true&action=dashboard");
+      $requestType = "changeEmail";
+      require('src/views/ViewNotification.php');
     } else {
       require('src/views/viewAdmin/changeEmail.php');
     }
@@ -78,38 +79,48 @@ class Admin
   public function editAd()
   {
     $idAd = $_GET['id'] ?? "";
-    $infoAd = $this->modelAdmin->retrieveAdWithId($idAd);
-    require('src/views/viewAdmin/editAd.php');
+    $_SESSION['idEditAd'] = $idAd;
+    $infoAd = $this->modelAdmin->retrieveAdWithId($idAd) ?? [];
+    if (!$infoAd) {
+      throw new Exception(ERROR_REDIRECT);
+    } else {
+      require('src/views/viewAdmin/editAd.php');
+    }
   }
 
   public function confirmEditAd()
   {
-    $requestType = "editAd";
+    $idEditAd = $_SESSION['idEditAd'] ?? "";
+    unset($_SESSION['idEditAd']);
     $idAd = $_GET['id'] ?? "";
-    // Permets de nettoyer le formulaire de création 
-    $allInput = $this->errorManagement->sanatizeCreateForm($_POST);
-    // Permet de vérifier le formulaire
-    $errorInput = $this->errorManagement->checkAllInputCreateAd($_POST);
 
-    $errorStatus = $this->errorManagement->checkErrorStatus($allInput['status'] ?? "");
-    if ($errorStatus) {
-      $errorInput['errorStatus'] = $errorStatus;
-    }
+    if ($idEditAd === $idAd) {
+      $requestType = "editAd";
+      // Permets de nettoyer le formulaire de création 
+      $allInput = $this->errorManagement->sanatizeCreateForm($_POST);
+      // Permet de vérifier le formulaire
+      $errorInput = $this->errorManagement->checkAllInputCreateAd($_POST);
+      $errorStatus = $this->errorManagement->checkErrorStatus($allInput['status'] ?? "");
+      if ($errorStatus) {
+        $errorInput['errorStatus'] = $errorStatus;
+      }
 
+      if (empty(array_filter($errorInput, fn ($el) => $el != '')) && !$errorStatus) {
+        // Permets de mettre à jour l'annonce dans la bdd
+        $saveEdit = $this->modelAdmin->editAd($allInput, $idAd);
 
-    if (empty(array_filter($errorInput, fn ($el) => $el != '')) && !$errorStatus) {
-
-      // Permets de mettre à jour l'annonce dans la bdd
-      $saveEdit = $this->modelAdmin->editAd($allInput, $idAd);
-
-
-      if ($saveEdit) {
-        header("location: admin?login=true&action=dashboard");
+        if ($saveEdit) {
+          $requestType === "editAd";
+          require('src/views/ViewNotification.php');
+        } else {
+          $requestType === "notEditAd";
+          require('src/views/ViewNotification.php');
+        }
       } else {
-        throw new Exception("a écrire");
+        require('src/views/viewAdmin/editAd.php');
       }
     } else {
-      require('src/views/viewAdmin/editAd.php');
+      throw new Exception(ERROR_ACCESS_DENIED);
     }
   }
 
@@ -117,7 +128,7 @@ class Admin
   {
     $requestType = "deleteAd";
     $idAd = $_GET['id'] ?? "";
-    $_SESSION['idAd'] = $idAd;
+    $_SESSION['idAdDelete'] = $idAd;
     require('src/views/viewAdmin/confirmPage.php');
   }
 
@@ -129,16 +140,40 @@ class Admin
 
   public function deleteAd()
   {
+    $adWantDelete = $_SESSION['idAdDelete'] ?? "";
+    unset($_SESSION['idAdDelete']);
     $idAd = $_GET['id'] ?? "";
-    $imgAd = $this->modelAdmin->retrieveImg($idAd);
-    // Permets de supprimer l'image de l'annonce
-    $deleteAd = $this->modelAdmin->deleteAd($idAd);
+    if ($adWantDelete === $idAd) {
+      $imgAd = $this->modelAdmin->retrieveImg($idAd);
+      // Permets de supprimer l'image de l'annonce
+      $deleteAd = $this->modelAdmin->deleteAd($idAd);
 
-    if ($deleteAd) {
-      $this->modelAdmin->deleteOldImg($imgAd['img']);
-      header("location: admin?login=true&action=dashboard");
+      if ($deleteAd) {
+        $this->modelAdmin->deleteOldImg($imgAd['img']);
+        $requestType = "deleteAd";
+        require('src/views/ViewNotification.php');
+      } else {
+        $requestType = "notDeleteAd";
+        require('src/views/ViewNotification.php');
+      }
     } else {
-      throw new Exception("à écrire");
+      throw new Exception(ERROR_ACCESS_DENIED);
+    }
+  }
+
+  public function cleanSession()
+  {
+
+    if (isset($_SESSION['idEditAd'])) {
+      unset($_SESSION['idEditAd']);
+    }
+
+    if (isset($_SESSION['idAd'])) {
+      unset($_SESSION['idAd']);
+    }
+
+    if (isset($_SESSION['idAdDelete'])) {
+      unset($_SESSION['idAdDelete']);
     }
   }
 }

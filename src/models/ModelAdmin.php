@@ -33,9 +33,9 @@ class ModelAdmin
   /**
    * request all information from ad selected
    * @param string $idAd ad selected
-   * @return array all information from ad selected
+   * @return array|bool all information from ad selected
    */
-  public function retrieveAdWithId(string $idAd): array
+  public function retrieveAdWithId(string $idAd): array|bool
   {
     $statementRetrieveAdWithAd = $this->dbh->connectDb()->prepare("SELECT * FROM ad WHERE idAd=:id ");
     $statementRetrieveAdWithAd->bindValue(":id", $idAd);

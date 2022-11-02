@@ -1,4 +1,5 @@
 .home {
+  position: relative; // a voir
   display: grid;
   gap: 2rem;
   border-radius: 2px;
@@ -12,7 +13,6 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
-
   }
 
   &__name {
@@ -36,13 +36,12 @@
   &__details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2,min-content) 15rem; // a voir
+    grid-template-rows: repeat(2, min-content) 15rem; // a voir
     align-items: center;
     justify-content: center;
     background-color: $color-grey-light-1;
     @media only screen and (max-width: $mob) {
-      grid-template-rows: repeat(3,min-content);
-
+      grid-template-rows: repeat(3, min-content);
     }
   }
 
@@ -81,6 +80,7 @@
     color: #fff;
     background-color: $color-primary;
     transition: all 0.2s;
+    text-align: center;
     &:hover,
     &:active {
       background-color: $color-primary-dark;

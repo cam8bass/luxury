@@ -8,13 +8,14 @@ class ViewAd extends View {
   }
 
   _generateMarkup(ad) {
-    const markup=`
+    const markup = `
     <div class="home">
     <img
       src="${ad.img}"
       alt="home"
       class="home__img"
     />
+    ${ad.status === "Sold" ? "<div class='sold'>Vendu</div>" : ""}
     <h5 class="home__name">${ad.title}</h5>
     <div class="home__details">
       <div class="home__block">
@@ -57,7 +58,12 @@ class ViewAd extends View {
        ${ad.description}
       </p>
     </div>
-    <button class="btn home__btn">Visiter</button>
+    ${
+      ad.status === "Sold"
+        ? ""
+        : "<a href='tel:+336698523148' class='btn home__btn'>Visiter</a>"
+    }
+
   </div>
     `;
     this._parentElement.insertAdjacentHTML("afterbegin", markup);

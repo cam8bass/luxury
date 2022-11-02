@@ -68,6 +68,11 @@
     &:active {
       background-color: $color-secondary-light;
     }
+
+    &-return {
+      grid-column: 1/-1;
+     justify-self: center;
+    }
   }
 
   &__agree {

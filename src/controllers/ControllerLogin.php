@@ -28,17 +28,13 @@ class login
     // Permets de récupérer et valider l’adresse email et le password
     $email = $allInput['email'] ?? '';
     $password = $allInput['password'] ?? "";
-
     // Permets de rechercher un utilisateur grâce à l'email rentré
     $userAccount = $this->modelLogin->retrieveEmail($email);
-
     // Permets de vérifier si les données du formulaire sont correctes
     $errorLogin = $this->errorManagement->checkInputLogin($userAccount, $password, $email);
-
     if (empty(array_filter($errorLogin, fn ($el) => $el !== ""))) {
       $this->modelLogin->loginUser($userAccount);
       header("location: admin?login=true&action=dashboard");
-
     } else {
       require('src/views/viewAdmin/login.php');
     }

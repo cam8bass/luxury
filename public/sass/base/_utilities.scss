@@ -4,16 +4,32 @@
 //   opacity: 0;
 // }
 
-.hidden {
-  visibility: hidden;
-  display: none;
-  opacity: 0;
-}
+// .hidden {
+//   visibility: hidden;
+//   display: none;
+//   opacity: 0;
+// }
 
-.spinner {
-  &__img {
-    height: 6rem;
-    width: 6rem;
-    animation: rotate 2s infinite linear;
-  }
+// .spinner {
+//   &__img {
+//     height: 6rem;
+//     width: 6rem;
+//     animation: rotate 2s infinite linear;
+//   }
+// }
+
+.sold {
+  background-color: rgba($color-secondary, 0.8);
+  z-index: 2000;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-yellow-light;
+  font-family: $font-display;
+  font-weight: 300;
+  width: 100%;
+  height: 100%;
+  font-size: 6rem;
+  backdrop-filter: blur(2px);
 }
