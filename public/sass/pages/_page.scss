@@ -21,6 +21,7 @@
 }
 
 .page__displayAd {
+
   grid-template-rows: min-content 1fr;
   @media only screen and (max-width: $tab) {
     grid-template-rows: repeat(2, min-content) 1fr;

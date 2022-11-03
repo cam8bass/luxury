@@ -9,7 +9,6 @@
   <?php require_once('includes/sidebar.php') ?>
   <div class="content content__ad">
     <ul class="list">
-
       <?php foreach ($allAd as $ad) : ?>
         <li class="list__item" id="test">
           <img src="<?= $ad['img'] ?>" alt="house" class="list__img" />
@@ -31,7 +30,7 @@
 
           <div class="list__detail">
             <span class="list__detail-name">Status:</span>
-            <span class="list__detail-text"><?= $ad['status']==="Available"?"Disponible":"Vendu" ?></span>
+            <span class="list__detail-text"><?= $ad['status'] === "Available" ? "Disponible" : "Vendu" ?></span>
           </div>
 
           <div class="list__btn">
@@ -45,7 +44,6 @@
         </li>
       <?php endforeach ?>
     </ul>
-
   </div>
 </body>
 

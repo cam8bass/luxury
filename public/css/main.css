@@ -513,16 +513,8 @@ body {
   }
 }
 .content__ad {
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  min-height: 100vh;
+  max-height: 100%;
 }
 .content__edit {
   display: grid;
@@ -596,6 +588,9 @@ body {
 @media only screen and (max-width: 510px) {
   .navigation__item {
     margin-right: 0;
+  }
+  .navigation__item:not(:last-child) {
+    margin-bottom: 1rem;
   }
 }
 .navigation__link {
@@ -1410,6 +1405,7 @@ body {
 
 .list {
   width: 95%;
+  margin: 2rem 0;
 }
 @media only screen and (max-width: 1000px) {
   .list {

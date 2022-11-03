@@ -36,6 +36,9 @@
     margin-right: 4rem;
     @media only screen and (max-width: $mob) {
       margin-right: 0;
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
     }
   }
 
