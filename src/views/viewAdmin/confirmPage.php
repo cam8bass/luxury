@@ -1,6 +1,6 @@
 <?php
 
-$idAd = $_SESSION["idAd"] ?? "";
+$idAd = $_SESSION["idAdDelete"] ?? "";
 
 if ($requestType === "deleteAd") {
   // Permet de remplir la page de confirmation de suppréssion d'une annonce
