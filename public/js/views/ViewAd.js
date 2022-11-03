@@ -1,6 +1,4 @@
-import View from "./Views.js";
-
-class ViewAd extends View {
+class ViewAd {
   _parentElement = document.querySelector(".homes");
 
   displayAllAd(data) {

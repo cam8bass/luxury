@@ -1,4 +1,10 @@
 class ModelContact {
+  /**
+   * 
+   * @param {*} inputSubject 
+   * @param {*} errorSubjectText 
+   * @returns bool 
+   */
   validSubject(inputSubject, errorSubjectText) {
     if (!inputSubject.value) {
       errorSubjectText.textContent = "Veuillez renseigner ce champ";
@@ -16,6 +22,12 @@ class ModelContact {
     }
   }
 
+  /**
+   * 
+   * @param {*} inputMessage 
+   * @param {*} errorMessageText 
+   * @returns bool
+   */
   validMessage(inputMessage, errorMessageText) {
     if (!inputMessage.value) {
       errorMessageText.textContent = "Veuillez renseigner ce champ";

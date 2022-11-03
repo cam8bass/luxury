@@ -11,6 +11,7 @@ class ModelAdmin
 {
   public DatabaseConnection $dbh;
   public string $imgPath = "./data/uploads/";
+
   /**
    * retrieve user profile from settings page
    * @return array user profile (firstName, lastName, email)
@@ -22,7 +23,9 @@ class ModelAdmin
     return $statementRetrieveUser->fetch();
   }
 
-
+  /**
+   * @return array all ad
+   */
   public function selectAllAd()
   {
     $statementSelectAllAd = $this->dbh->connectDb()->prepare("SELECT * FROM ad");
@@ -56,6 +59,10 @@ class ModelAdmin
     return $statementRetrieveEmail->fetch();
   }
 
+  /**
+   * @param string $idAd
+   * @return array img path
+   */
   public function retrieveImg(string $idAd): array
   {
     $statementRetrieveImg = $this->dbh->connectDb()->prepare("SELECT img FROM ad WHERE idAd=$idAd");
@@ -103,6 +110,11 @@ class ModelAdmin
     return $statementAddAd->execute();
   }
 
+  /**
+   * @param array $updateAd
+   * @param string $id
+   * @return bool
+   */
   public function editAd(array $updateAd,  string $id): bool
   {
     $statementEditAd = $this->dbh->connectDb()->prepare("UPDATE ad SET 
@@ -126,6 +138,12 @@ class ModelAdmin
     return $statementEditAd->execute();
   }
 
+  /**
+   * update email 
+   * @param string $newEmail
+   * @param string $oldUserEmail
+   * @return void
+   */
   public function updateEmail(string $newEmail, string $oldUserEmail)
   {
     $statementUpdateEmail = $this->dbh->connectDb()->prepare("UPDATE user SET email=:newEmail WHERE email=:oldUserEmail");
@@ -134,6 +152,11 @@ class ModelAdmin
     $statementUpdateEmail->execute();
   }
 
+  /**
+   * save new img 
+   * @param array $img
+   * @return string imgPath
+   */
   public function saveNewImg(array $img)
   {
     $idImg = uniqid();

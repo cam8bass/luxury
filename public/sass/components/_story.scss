@@ -1,8 +1,8 @@
 .story {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-    @media only screen and (max-width: $tab) {
-grid-template-columns: 1fr;
+  @media only screen and (max-width: $tab) {
+    grid-template-columns: 1fr;
   }
 
   &__pictures {
@@ -19,18 +19,16 @@ grid-template-columns: 1fr;
     background-position: center;
     height: 70rem;
 
-
     &--1 {
       width: 60%;
       opacity: 0.6;
       border-radius: 3px;
-@include boxShadow;
+      @include boxShadow;
       z-index: 2;
       @media only screen and (max-width: $tab) {
-         display: none;
-            }
+        display: none;
+      }
     }
-   
   }
 
   &__content {
@@ -53,8 +51,7 @@ grid-template-columns: 1fr;
       font-family: $font-primary;
       font-weight: 300;
       @media only screen and (max-width: $mob) {
-      font-size: 3.5rem;
-    
+        font-size: 3.5rem;
       }
     }
   }

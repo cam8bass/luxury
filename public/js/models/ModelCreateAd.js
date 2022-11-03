@@ -1,7 +1,10 @@
-
-
 class ModelCreateAd {
-  //img
+/**
+ * 
+ * @param {*} input 
+ * @param {*} error 
+ * @returns bool
+ */
   validInputImg(input, error) {
     let message;
     if (!input.value || input.value.length === 0) {
@@ -13,7 +16,13 @@ class ModelCreateAd {
       return true;
     }
   }
-  //title
+
+  /**
+   * 
+   * @param {*} input 
+   * @param {*} error 
+   * @returns bool
+   */
   validInputTitle(input, error) {
     let message;
     if (!input.value || input.value.length === 0) {
@@ -37,7 +46,13 @@ class ModelCreateAd {
       return true;
     }
   }
-  //location
+
+  /**
+   * 
+   * @param {*} input 
+   * @param {*} error 
+   * @returns bool
+   */
   validInputLocation(input, error) {
     let message;
     if (!input.value || input.value.length === 0) {
@@ -61,7 +76,13 @@ class ModelCreateAd {
       return true;
     }
   }
-  //room
+
+  /**
+   * 
+   * @param {*} input 
+   * @param {*} error 
+   * @returns bool
+   */
   validInputRoom(input, error) {
     let message;
     if (!input.value || input.value.length === 0) {
@@ -93,7 +114,13 @@ class ModelCreateAd {
       return true;
     }
   }
-  //area
+
+  /**
+   * 
+   * @param {*} input 
+   * @param {*} error 
+   * @returns bool
+   */
   validInputArea(input, error) {
     let message;
     if (!input.value || input.value.length === 0) {
@@ -125,7 +152,13 @@ class ModelCreateAd {
       return true;
     }
   }
-  //price
+
+  /**
+   * 
+   * @param {*} input 
+   * @param {*} error 
+   * @returns bool
+   */
   validInputPrice(input, error) {
     let message;
     if (!input.value || input.value.length === 0) {
@@ -157,7 +190,13 @@ class ModelCreateAd {
       return true;
     }
   }
-  //description
+
+  /**
+   * 
+   * @param {*} input 
+   * @param {*} error 
+   * @returns bool
+   */
   validInputDescription(input, error) {
     let message;
 
@@ -178,8 +217,6 @@ class ModelCreateAd {
       return true;
     }
   }
-
-
 }
 
 export default new ModelCreateAd();

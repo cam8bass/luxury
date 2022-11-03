@@ -5,7 +5,6 @@ class ControleAd {
   displayAd = async function () {
     const allAd = await modelAd.loadAllAd();
     viewAd.displayAllAd(allAd);
-    console.log(allAd);
   };
 }
 

@@ -5,7 +5,7 @@
   z-index: 2000;
   display: flex;
 
- img {
+  img {
     height: 3rem;
     width: 3rem;
     fill: $color-primary;
@@ -13,7 +13,7 @@
   }
 
   p {
-    color: #FFF;
+    color: #fff;
     font-family: $font-primary;
     font-weight: 300;
     margin-left: 1.5rem;

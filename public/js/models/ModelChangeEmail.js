@@ -1,6 +1,10 @@
-
-
 class ModelSettings {
+  /**
+   * @param {*} inputOldEmail
+   * @param {*} inputNewEmail
+   * @param {*} errorNewEmail
+   * @returns bool 
+   */
   checkOldAndNewEamil(inputOldEmail, inputNewEmail, errorNewEmail) {
     if (inputOldEmail.value === inputNewEmail.value) {
       errorNewEmail.textContent =

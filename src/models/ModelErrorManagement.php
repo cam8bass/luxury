@@ -121,9 +121,13 @@ class ErrorManagement
     } else {
       $this->errorImg  = ERROR_IMG;
     }
-    return   $this->errorImg ;
+    return   $this->errorImg;
   }
 
+  /**
+   * @param array $allInput
+   * @return array $errorCreateAd
+   */
   public function checkAllInputCreateAd(array $allInput): array
   {
     $title = $allInput['title'] ?? "";
@@ -314,7 +318,13 @@ class ErrorManagement
     return $this->errorCreateAd;
   }
 
-  public function checkErrorChangeEmail($oldEmail, $oldUserEmail, $newEmail)
+  /**
+   * @param string $oldEmail
+   * @param string $oldUserEmail
+   * @param string $newEmail
+   * @return array $errorChangeEmail
+   */
+  public function checkErrorChangeEmail(string $oldEmail, string $oldUserEmail, string $newEmail): array
   {
     if ($oldEmail !== $oldUserEmail) {
       $this->errorChangeEmail['errorOldEmail'] = ERROR_EMAIL_WRONG;
@@ -335,6 +345,10 @@ class ErrorManagement
     return $this->errorChangeEmail;
   }
 
+  /**
+   * @param string $status
+   * @return string $error
+   */
   public function checkErrorStatus(string $status)
   {
     $validStatus = ['Available', 'Sold'];

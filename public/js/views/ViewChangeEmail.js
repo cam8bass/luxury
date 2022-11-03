@@ -1,5 +1,3 @@
-
-
 class ViewChangeEmail {
   _parentElement = document.querySelector(".content");
   _formChangeEmail = document.querySelector("#form-changeEmail");

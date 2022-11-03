@@ -1,6 +1,4 @@
-import View from "./Views.js";
-
-class ViewCreateAd extends View {
+class ViewCreateAd {
   _parentElement = document.querySelector("#form-createAd");
   // === Input ===
   _inputImg = document.querySelector("#input-img");

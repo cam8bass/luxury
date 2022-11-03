@@ -1,5 +1,5 @@
 .home {
-  position: relative; // a voir
+  position: relative;
   display: grid;
   gap: 2rem;
   border-radius: 2px;
@@ -36,7 +36,7 @@
   &__details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, min-content) 15rem; // a voir
+    grid-template-rows: repeat(2, min-content) 15rem;
     align-items: center;
     justify-content: center;
     background-color: $color-grey-light-1;

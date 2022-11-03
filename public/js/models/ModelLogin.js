@@ -1,5 +1,3 @@
-
-
 class ModelLogin {
   /**
    *valid email before submitting from

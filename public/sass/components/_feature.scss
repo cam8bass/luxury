@@ -7,16 +7,15 @@
   column-gap: 2rem;
   row-gap: 1rem;
   padding: 2rem;
-  
+
   &__icon {
     grid-row: 1/-1;
     align-self: flex-start;
     width: 6rem;
     height: 6rem;
     @media only screen and (max-width: $mob) {
-  width: 4rem;
-  height: 4rem;
-  
+      width: 4rem;
+      height: 4rem;
     }
   }
 
