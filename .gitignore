@@ -2,3 +2,5 @@
 *.webm
 data/uploads/
 /vendor/
+/src/secure/secureData.php
+*.DS_Store

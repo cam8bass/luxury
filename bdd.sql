@@ -1,5 +1,3 @@
-// === Create user table ===
-
 CREATE TABLE `u223495013_luxury`.`user` (
 `idUser` INT NOT NULL AUTO_INCREMENT,
 `firstName` VARCHAR(45) NOT NULL,
@@ -9,23 +7,10 @@ CREATE TABLE `u223495013_luxury`.`user` (
 PRIMARY KEY (`idUser`),
 UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
 
-// === Create session table ===
-
 CREATE TABLE `u223495013_luxury`.`session` (
 `idsession` CHAR(64) NOT NULL,
 `idUser` INT NOT NULL,
 PRIMARY KEY (`idsession`));
-
-// === Event clean table ===
-
-ALTER TABLE u223495013_luxury.session ADD createdAt timestamp DEFAULT CURRENT_TIMESTAMP
-CREATE EVENT ClearExpiredSessions
-ON SCHEDULE EVERY 1 DAY
-COMMENT 'Nettoie la table session tous les jours'
-DO
-DELETE FROM u223495013_luxury.session WHERE DATE_ADD(createdAt, INTERVAL 2 WEEK) < NOW();
-
-// === Create ad table ===
 
 CREATE TABLE `u223495013_luxury`.`ad` (
 `idAd` INT NOT NULL AUTO_INCREMENT,
@@ -38,3 +23,10 @@ CREATE TABLE `u223495013_luxury`.`ad` (
 `location` VARCHAR(45) NOT NULL,
 `description` LONGTEXT NOT NULL,
 PRIMARY KEY (`idAd`));
+
+ALTER TABLE u223495013_luxury.session ADD createdAt timestamp DEFAULT CURRENT_TIMESTAMP
+CREATE EVENT ClearExpiredSessions
+ON SCHEDULE EVERY 1 DAY
+COMMENT 'Nettoie la table session tous les jours'
+DO
+DELETE FROM u223495013_luxury.session WHERE DATE_ADD(createdAt, INTERVAL 2 WEEK) < NOW();
