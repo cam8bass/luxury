@@ -21,6 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="public/css/main.css" />
+  <meta
+      name="description"
+      content="Luxury, votre agence immobilière de luxe regroupant les meilleurs conseillers pour des annonces de qualité."
+    />
   <script defer type="module" src="public/js/controllers/ControllerContact.js"></script>
 
   <title>Luxary Contact</title>
