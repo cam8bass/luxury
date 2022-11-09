@@ -1,8 +1,8 @@
 <?php
-define("SECURE_DNS_DB", "mysql:host=54.37.31.19;dbname=u223495013_luxury");
-define("SECURE_USER_DB", "u223495013_camille");
-define("SECURE_PWD_DB", "Klouns;8666");
-define('SECURE_EMAIL', "lc.laignel@camei8ht.fr");
-define("SECURE_PWD_EMAIL", "Klouns;8666");
+define("SECURE_DNS_DB", "mysql:host=yourDatabase;dbname=yourDatabaseName");
+define("SECURE_USER_DB", "your user database");
+define("SECURE_PWD_DB", "your database password");
+define('SECURE_EMAIL', "your email");
+define("SECURE_PWD_EMAIL", "your email password");
 
-define("SECRET", "6a652073756973206c6520636865662c206a2761696d65206269656e206a6f7565722061766563206d6573206a6f75657473206574206a75737465206d6573206a6f7565747320c3a0206d6f69");
+define("SECRET", "your secret");
