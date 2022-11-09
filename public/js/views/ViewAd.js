@@ -59,7 +59,7 @@ class ViewAd {
     ${
       ad.status === "Sold"
         ? ""
-        : "<a href='tel:+336698523148' class='btn home__btn'>Visiter</a>"
+        : "<a href='tel:+330000000000' class='btn home__btn'>Visiter</a>"
     }
 
   </div>
